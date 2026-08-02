@@ -1,5 +1,5 @@
 // Service Worker：离线缓存。升级卡组/代码时把 CACHE 版本号 +1 即可强制刷新。
-const CACHE = "spoken-cards-v3";
+const CACHE = "spoken-cards-v4";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,14 +8,17 @@ const ASSETS = [
   "./icon-512.png",
   "./icon-512-maskable.png",
   "./apple-touch-icon.png",
-  "./data/toc.js?v=3",
-  "./data/deck-topic-01.js?v=3",
-  "./data/deck-topic-02.js?v=3",
-  "./data/deck-topic-03.js?v=3",
-  "./data/deck-topic-04.js?v=3",
-  "./data/deck-topic-05.js?v=3",
-  "./data/deck-topic-06.js?v=3",
-  "./data/deck-topic-07.js?v=3"
+  "./data/toc.js?v=4",
+  "./data/deck-topic-01.js?v=4",
+  "./data/deck-topic-02.js?v=4",
+  "./data/deck-topic-03.js?v=4",
+  "./data/deck-topic-04.js?v=4",
+  "./data/deck-topic-05.js?v=4",
+  "./data/deck-topic-06.js?v=4",
+  "./data/deck-topic-07.js?v=4",
+  "./data/deck-topic-08.js?v=4",
+  "./data/deck-topic-09.js?v=4",
+  "./data/deck-topic-10.js?v=4"
 ];
 
 self.addEventListener("install", (e) => {
