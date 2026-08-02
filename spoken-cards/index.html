@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="口语卡">
+<meta name="theme-color" content="#f2f2f7">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" href="./icon-192.png">
+<title>口语卡 · 雅思口语深度突破</title>
+<style>
+  :root {
+    --bg: #f2f2f7;
+    --glass: rgba(255, 255, 255, 0.66);
+    --glass-strong: rgba(255, 255, 255, 0.82);
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --row: rgba(255, 255, 255, 0.62);
+    --ink: #1c1c1e;
+    --ink-2: rgba(60, 60, 67, 0.62);
+    --ink-3: rgba(60, 60, 67, 0.34);
+    --line: rgba(60, 60, 67, 0.12);
+    --fill: rgba(120, 120, 128, 0.13);
+    --seg: rgba(120, 120, 128, 0.15);
+    --seg-thumb: #ffffff;
+    --tint: #007aff; --tint-bg: rgba(0, 122, 255, 0.12);
+    --ok: #34c759; --ok-bg: rgba(52, 199, 89, 0.14);
+    --warn: #ff9500; --warn-bg: rgba(255, 149, 0, 0.14);
+    --bad: #ff3b30; --bad-bg: rgba(255, 59, 48, 0.12);
+    --shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+    --shadow-float: 0 10px 32px rgba(0, 0, 0, 0.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --glass: rgba(28, 28, 30, 0.68);
+      --glass-strong: rgba(44, 44, 46, 0.8);
+      --glass-border: rgba(255, 255, 255, 0.09);
+      --row: rgba(44, 44, 46, 0.6);
+      --ink: #f2f2f7;
+      --ink-2: rgba(235, 235, 245, 0.62);
+      --ink-3: rgba(235, 235, 245, 0.32);
+      --line: rgba(84, 84, 88, 0.42);
+      --fill: rgba(120, 120, 128, 0.22);
+      --seg: rgba(118, 118, 128, 0.24);
+      --seg-thumb: #636366;
+      --tint: #0a84ff; --tint-bg: rgba(10, 132, 255, 0.2);
+      --ok: #30d158; --ok-bg: rgba(48, 209, 88, 0.2);
+      --warn: #ff9f0a; --warn-bg: rgba(255, 159, 10, 0.2);
+      --bad: #ff453a; --bad-bg: rgba(255, 69, 58, 0.2);
+      --shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+      --shadow-float: 0 10px 32px rgba(0, 0, 0, 0.55);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Noto Sans SC", sans-serif;
+    min-height: 100vh;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(55% 45% at 12% 8%, rgba(0, 122, 255, 0.09), transparent 70%),
+      radial-gradient(45% 40% at 92% 16%, rgba(88, 86, 214, 0.07), transparent 70%),
+      radial-gradient(65% 55% at 50% 104%, rgba(52, 199, 89, 0.06), transparent 72%);
+  }
+  #app { max-width: 480px; margin: 0 auto; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+
+  .glass {
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    backdrop-filter: blur(22px) saturate(180%);
+    border: 0.5px solid var(--glass-border);
+    box-shadow: var(--shadow);
+  }
+
+  header { padding: 16px 16px 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-size: 17px; font-weight: 600; letter-spacing: -0.2px; }
+  .brand small { display: block; font-size: 12px; color: var(--ink-2); font-weight: 400; margin-top: 2px; letter-spacing: 0; }
+  .modes { display: flex; background: var(--seg); border-radius: 999px; padding: 2px; min-width: 168px; }
+  .modes button {
+    flex: 1; border: 0; background: transparent; color: var(--ink); font-size: 13px; font-weight: 500;
+    padding: 6px 0; border-radius: 999px; cursor: pointer; font-family: inherit; white-space: nowrap; transition: all .18s ease;
+  }
+  .modes button.on { background: var(--seg-thumb); font-weight: 600; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15), 0 0.5px 0 rgba(255,255,255,.4) inset; }
+
+  .stats { display: flex; gap: 10px; padding: 8px 16px 12px; }
+  .stat { flex: 1; border-radius: 20px; padding: 11px 13px; cursor: pointer; user-select: none; transition: transform .15s ease; }
+  .stat:active { transform: scale(0.96); }
+  .stat b { font-size: 21px; font-weight: 600; display: block; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 11.5px; color: var(--ink-2); }
+
+  main { flex: 1; padding: 4px 16px 16px; display: flex; flex-direction: column; }
+  .cardbox { border-radius: 28px; padding: 20px; flex: 1; display: flex; flex-direction: column; min-height: 400px; }
+  .card-top { display: flex; justify-content: flex-start; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-3); margin-bottom: 8px; }
+  .card-top > span:last-child { margin-left: auto; font-variant-numeric: tabular-nums; }
+  .tag { background: var(--tint-bg); color: var(--tint); padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .tag.speakdebt { background: var(--warn-bg); color: var(--warn); }
+  .tag.new { background: var(--fill); color: var(--ink-2); }
+  .tag.review { background: var(--ok-bg); color: var(--ok); }
+  .card-mid { flex: 1; display: flex; flex-direction: column; justify-content: center; text-align: center; gap: 12px; }
+  .scene { font-size: 13px; color: var(--ink-2); font-weight: 500; }
+  .prompt { font-size: 22px; font-weight: 600; line-height: 1.5; letter-spacing: -0.2px; }
+  .hint { font-size: 12.5px; color: var(--ink-3); }
+  .chunk { font-size: 23px; font-weight: 600; line-height: 1.4; letter-spacing: -0.3px; }
+  .example { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; font-style: italic; }
+  .note { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; background: var(--fill); border-radius: 16px; padding: 11px 14px; text-align: left; }
+  .speakrow { display: flex; gap: 8px; justify-content: center; margin-top: 4px; }
+  .speakrow button {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 0.5px solid var(--line); background: var(--row); color: var(--ink);
+    font-size: 13.5px; font-weight: 500; padding: 8px 15px; border-radius: 999px; cursor: pointer; font-family: inherit;
+  }
+  .speakrow button:active { background: var(--fill); }
+  .bico { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+  .actions { margin-top: 16px; }
+  .flip {
+    width: 100%; border: 0; background: var(--tint); color: #fff; font-size: 16px; font-weight: 600;
+    padding: 15px; border-radius: 999px; cursor: pointer; font-family: inherit; letter-spacing: -0.2px;
+    box-shadow: 0 5px 18px rgba(0, 122, 255, 0.28); transition: transform .15s ease;
+  }
+  .flip:active { transform: scale(0.97); }
+  .grades { display: none; gap: 8px; }
+  .grades button {
+    flex: 1; border: 0; font-size: 15px; font-weight: 600; padding: 12px 4px; border-radius: 18px;
+    cursor: pointer; font-family: inherit; transition: transform .15s ease;
+  }
+  .grades button:active { transform: scale(0.95); }
+  .grades .g-again { color: var(--bad); background: var(--bad-bg); }
+  .grades .g-hard { color: var(--warn); background: var(--warn-bg); }
+  .grades .g-good { color: var(--ok); background: var(--ok-bg); }
+  .grades button small { display: block; font-weight: 500; font-size: 11px; opacity: .8; margin-top: 3px; font-variant-numeric: tabular-nums; }
+
+  .done { text-align: center; padding: 60px 24px; }
+  .done .doneico { width: 52px; height: 52px; margin: 0 auto 16px; color: var(--ok); fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .done h2 { font-size: 20px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; }
+  .done p { font-size: 14.5px; color: var(--ink-2); line-height: 1.7; }
+  .done button {
+    margin-top: 20px; border: 0; background: var(--fill); color: var(--tint);
+    font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: 999px; cursor: pointer; font-family: inherit;
+  }
+
+  nav {
+    position: sticky; bottom: 12px; z-index: 10; margin: auto 14px 12px;
+    margin-bottom: calc(12px + env(safe-area-inset-bottom));
+    display: flex; border-radius: 999px; padding: 5px 6px;
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 0.5px solid var(--glass-border);
+    box-shadow: var(--shadow-float);
+  }
+  nav button {
+    flex: 1; border: 0; background: transparent; color: var(--ink-3); font-size: 11px; font-weight: 500;
+    padding: 7px 0 5px; cursor: pointer; font-family: inherit; border-radius: 999px; transition: color .18s ease;
+  }
+  nav button.on { color: var(--tint); }
+  nav button .ico { display: block; width: 21px; height: 21px; margin: 0 auto 2px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+  .page { display: none; padding: 4px 16px 20px; }
+  .page.show { display: block; }
+  .part h3 { font-size: 13px; color: var(--ink-2); margin: 18px 6px 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2px; }
+  .topicrow {
+    display: flex; align-items: center; gap: 12px; background: var(--row);
+    border: 0.5px solid var(--glass-border); border-radius: 18px; padding: 12px 14px; margin-bottom: 7px;
+  }
+  .topicrow .num { font-size: 12px; color: var(--ink-3); min-width: 22px; font-variant-numeric: tabular-nums; }
+  .topicrow .names { flex: 1; min-width: 0; }
+  .topicrow .names b { font-size: 15px; font-weight: 600; display: block; letter-spacing: -0.2px; }
+  .topicrow .names span { font-size: 12.5px; color: var(--ink-2); }
+  .topicrow .meta { font-size: 11.5px; color: var(--ink-3); text-align: right; line-height: 1.5; }
+  .topicrow .meta .count { color: var(--ok); font-weight: 600; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .topicrow.has { cursor: pointer; transition: transform .15s ease; }
+  .topicrow.has:active { transform: scale(0.98); }
+
+  .subhead { display: flex; justify-content: space-between; align-items: baseline; margin: 12px 6px 12px; }
+  .subhead h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; }
+  .subnote { font-size: 12px; color: var(--ink-3); }
+  .acchead {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--row); border: 0.5px solid var(--glass-border); border-radius: 18px;
+    padding: 13px 15px; margin-bottom: 7px; cursor: pointer; transition: transform .15s ease;
+  }
+  .acchead:active { transform: scale(0.98); }
+  .acchead b { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; }
+  .acchead span { font-size: 12.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .chunkrow {
+    background: var(--row); border: 0.5px solid var(--glass-border); border-radius: 16px;
+    padding: 11px 14px; margin: 0 0 6px 14px; cursor: pointer;
+  }
+  .cr-line { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .cr-main { min-width: 0; }
+  .cr-main b { font-size: 14.5px; font-weight: 600; display: block; letter-spacing: -0.2px; }
+  .cr-main span { font-size: 12.5px; color: var(--ink-2); }
+  .cr-meta { font-size: 11.5px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .cr-detail { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; border-top: 0.5px solid var(--line); margin-top: 9px; padding-top: 9px; }
+  .cr-detail .example { margin-top: 6px; }
+  .bigbtn {
+    width: 100%; border: 0; background: var(--tint); color: #fff; font-size: 15.5px; font-weight: 600;
+    padding: 14px; border-radius: 999px; cursor: pointer; font-family: inherit; margin-bottom: 12px;
+    box-shadow: 0 5px 18px rgba(0, 122, 255, 0.28); transition: transform .15s ease;
+  }
+  .bigbtn:active { transform: scale(0.97); }
+
+  textarea {
+    width: 100%; min-height: 180px; background: var(--row); border: 0.5px solid var(--glass-border);
+    border-radius: 18px; color: var(--ink); font-size: 13px; padding: 13px;
+    font-family: ui-monospace, "SF Mono", monospace; outline: none;
+  }
+  textarea:focus { border-color: var(--tint); }
+  .btnrow { display: flex; gap: 8px; margin-top: 12px; }
+  .btnrow button {
+    flex: 1; border: 0; font-size: 15px; font-weight: 600; padding: 13px; border-radius: 999px;
+    cursor: pointer; font-family: inherit; background: var(--fill); color: var(--tint); transition: transform .15s ease;
+  }
+  .btnrow button:active { transform: scale(0.97); }
+  .btnrow button.primary { background: var(--tint); color: #fff; box-shadow: 0 5px 18px rgba(0, 122, 255, 0.28); }
+  .msg { font-size: 13px; margin-top: 10px; color: var(--ink-2); line-height: 1.6; }
+  .importhelp { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; margin: 8px 6px 12px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="brand">口语卡<small>雅思口语深度突破 · 碎片化语料积累</small></div>
+    <div class="modes" id="modes">
+      <button data-m="mute">静音</button>
+      <button data-m="ear">耳机</button>
+      <button data-m="speak">出声</button>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat glass" onclick="showPage('stock')"><b id="stStock">0</b><span>语料库存 ›</span></div>
+    <div class="stat glass" onclick="startDueReview()"><b id="stDue">0</b><span>今日待复习 ›</span></div>
+    <div class="stat glass" onclick="showPage('debt')"><b id="stDebt">0</b><span>待开口 ›</span></div>
+  </div>
+
+  <main id="pgReview">
+    <div class="cardbox glass" id="cardbox"></div>
+  </main>
+
+  <div class="page" id="pgBook"></div>
+
+  <div class="page" id="pgStock"></div>
+
+  <div class="page" id="pgDebt"></div>
+
+  <div class="page" id="pgImport">
+    <p class="importhelp">把书里某个 Topic 交给 Claude，用 README 里的拆书提示词生成 JSON 卡组，粘贴到下面导入。卡组会按书的目录自动归位。</p>
+    <textarea id="importBox" placeholder='{"topic": 57, "cards": [{"scene": "...", "prompt": "...", "chunk": "...", "note": "...", "example": "..."}]}'></textarea>
+    <div class="btnrow">
+      <button class="primary" onclick="doImport()">导入卡组</button>
+      <button onclick="resetProgress()">重置学习进度</button>
+    </div>
+    <p class="msg" id="importMsg"></p>
+  </div>
+
+  <nav>
+    <button id="nvReview" class="on" onclick="showPage('review')"><svg class="ico" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="16" rx="2.5"/><rect x="4" y="5.5" width="12" height="16" rx="2.5" fill="var(--bg)"/><path d="M7.5 11h5M7.5 14.5h3.5"/></svg>今日</button>
+    <button id="nvBook" onclick="showPage('book')"><svg class="ico" viewBox="0 0 24 24"><path d="M12 6.2C10.2 4.7 7.6 4.2 4 4.2v13.6c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2V4.2c-3.6 0-6.2.5-8 2z"/><path d="M12 6.2v13.6"/></svg>书目</button>
+    <button id="nvImport" onclick="showPage('import')"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3.5v8.5"/><path d="M8.5 8.5L12 12l3.5-3.5"/><path d="M4 13.5v3A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-3"/></svg>导入</button>
+  </nav>
+</div>
+
+<script src="data/toc.js?v=3"></script>
+<script src="data/deck-topic-01.js?v=3"></script>
+<script src="data/deck-topic-02.js?v=3"></script>
+<script src="data/deck-topic-03.js?v=3"></script>
+<script src="data/deck-topic-04.js?v=3"></script>
+<script src="data/deck-topic-05.js?v=3"></script>
+<script src="data/deck-topic-06.js?v=3"></script>
+<script src="data/deck-topic-07.js?v=3"></script>
+<script>
+const LS_STATE = "sc_state_v1", LS_DECKS = "sc_decks_v1";
+const DAY = 86400000;
+const ICO_SPK = '<svg class="bico" viewBox="0 0 24 24"><path d="M11 5.5L6.5 9H4.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2L11 18.5z"/><path d="M14.5 9.5a4 4 0 0 1 0 5"/><path d="M17 7a7.5 7.5 0 0 1 0 10"/></svg>';
+let state = load(LS_STATE, { cards: {}, silentQueue: [], mode: "ear", newPerSession: 6 });
+let customDecks = load(LS_DECKS, []);
+let queue = [], current = null, flipped = false, fromDebt = false;
+
+function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
+function save() { localStorage.setItem(LS_STATE, JSON.stringify(state)); localStorage.setItem(LS_DECKS, JSON.stringify(customDecks)); }
+
+function allDecks() {
+  const seed = window.SEED_DECKS || [];
+  const map = {};
+  [...seed, ...customDecks].forEach(d => { map[d.topic] = d; });
+  return Object.values(map);
+}
+function allCards() {
+  const out = [];
+  allDecks().forEach(d => d.cards.forEach((c, i) => {
+    out.push({ ...c, id: `t${d.topic}-${String(i + 1).padStart(2, "0")}`, topic: d.topic });
+  }));
+  return out;
+}
+function cardState(id) {
+  if (!state.cards[id]) state.cards[id] = { due: 0, iv: 0, ef: 2.3, reps: 0, lapses: 0, seen: false };
+  return state.cards[id];
+}
+function topicName(n) {
+  for (const p of BOOK_TOC) for (const t of p.topics) if (t.n === n) return `Topic ${t.n} · ${t.cn}`;
+  return `Topic ${n}`;
+}
+
+// ---------- 队列 ----------
+function buildQueue() {
+  const now = Date.now(), cards = allCards();
+  const byId = Object.fromEntries(cards.map(c => [c.id, c]));
+  let q = [];
+  if (state.mode === "speak" && state.silentQueue.length) {
+    q = state.silentQueue.filter(id => byId[id]).map(id => ({ ...byId[id], debt: true }));
+  }
+  const due = cards.filter(c => { const s = cardState(c.id); return s.seen && s.due <= now && !q.find(x => x.id === c.id); });
+  due.sort((a, b) => cardState(a.id).due - cardState(b.id).due);
+  q = q.concat(due);
+  const fresh = cards.filter(c => !cardState(c.id).seen && !q.find(x => x.id === c.id)).slice(0, state.newPerSession);
+  return q.concat(fresh);
+}
+
+// ---------- 渲染 ----------
+function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+function renderStats() {
+  const endOfToday = new Date().setHours(23, 59, 59, 999), cards = allCards();
+  let stock = 0, due = 0;
+  cards.forEach(c => { const s = state.cards[c.id]; if (s && s.seen) { stock++; if (s.due <= endOfToday) due++; } });
+  stStock.textContent = stock; stDue.textContent = due; stDebt.textContent = state.silentQueue.length;
+}
+function renderModes() {
+  document.querySelectorAll("#modes button").forEach(b => b.classList.toggle("on", b.dataset.m === state.mode));
+}
+function renderCard() {
+  renderStats();
+  const box = document.getElementById("cardbox");
+  if (!current) {
+    box.innerHTML = `<div class="done">
+      <svg class="doneico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>
+      <h2>今天这一组完成了</h2>
+      <p>语料库存 ${stStock.textContent} 条。<br>碎片时间再打开一次，就是又一组。<br>${state.silentQueue.length ? `还有 ${state.silentQueue.length} 条待开口——切到「出声」模式补上。` : "没有待开口欠账，很好。"}</p>
+      <button onclick="startSession(true)">再来一组新卡</button></div>`;
+    return;
+  }
+  const s = cardState(current.id);
+  const isNew = !s.seen;
+  const debtTag = current.debt ? `<span class="tag speakdebt">补开口</span>` : "";
+  const modeHint = state.mode === "mute" ? "在脑子里用英语说出这句话" : state.mode === "speak" ? "小声用英语说出这句话，再翻面" : "先试着用英语说，翻面听发音跟读";
+  if (!flipped) {
+    box.innerHTML = `
+      <div class="card-top"><span class="tag">${esc(topicName(current.topic))}</span><span class="tag ${isNew ? "new" : "review"}">${isNew ? "新卡" : "复习"}</span>${debtTag}<span>剩 ${queue.length + 1}</span></div>
+      <div class="card-mid">
+        <div class="scene">${esc(current.scene)}</div>
+        <div class="prompt">${esc(current.prompt)}</div>
+        <div class="hint">${modeHint}</div>
+      </div>
+      <div class="actions"><button class="flip" onclick="flip()">翻面看答案</button></div>`;
+  } else {
+    box.innerHTML = `
+      <div class="card-top"><span class="tag">${esc(current.scene)}</span><span class="tag ${isNew ? "new" : "review"}">${isNew ? "新卡" : "复习"}</span>${debtTag}<span>剩 ${queue.length + 1}</span></div>
+      <div class="card-mid">
+        <div class="chunk">${esc(current.chunk)}</div>
+        <div class="example">${esc(current.example)}</div>
+        <div class="note">${esc(current.note)}</div>
+        ${state.mode !== "mute" ? `<div class="speakrow">
+          <button onclick="speak(currentChunk())">${ICO_SPK}语块</button>
+          <button onclick="speak(currentExample())">${ICO_SPK}例句</button>
+        </div>` : ""}
+      </div>
+      <div class="actions"><div class="grades" style="display:flex">
+        <button class="g-again" onclick="grade(0)">说不出<small>10 分钟后重来</small></button>
+        <button class="g-hard" onclick="grade(1)">磕磕绊绊<small>${ivText(previewIv(s, 1))}</small></button>
+        <button class="g-good" onclick="grade(2)">脱口而出<small>${ivText(previewIv(s, 2))}</small></button>
+      </div></div>`;
+  }
+}
+function previewIv(s, g) {
+  if (g === 1) return Math.max(1, Math.round(s.iv * 1.2));
+  const reps = s.reps + 1;
+  return reps === 1 ? 1 : reps === 2 ? 3 : Math.round(s.iv * s.ef);
+}
+function ivText(d) { return d === 1 ? "明天" : `${d} 天后`; }
+function currentChunk() { return current ? current.chunk.replace(/…/g, "") : ""; }
+function currentExample() { return current ? current.example.replace(/—/g, ",") : ""; }
+
+// ---------- 流程 ----------
+function startSession(moreNew) {
+  if (moreNew) state.newPerSession += 6;
+  queue = buildQueue();
+  next();
+}
+function next() {
+  current = queue.shift() || null;
+  flipped = false; fromDebt = !!(current && current.debt);
+  renderCard();
+}
+function flip() {
+  flipped = true; renderCard();
+  if (state.mode === "ear" || state.mode === "speak") speak(currentChunk());
+}
+function grade(g) {
+  const s = cardState(current.id); const now = Date.now();
+  s.seen = true;
+  if (g === 0) { s.lapses++; s.reps = 0; s.iv = 0; s.due = now + 10 * 60000; s.ef = Math.max(1.3, s.ef - 0.2); queue.splice(Math.min(2, queue.length), 0, { ...current }); }
+  else if (g === 1) { s.iv = Math.max(1, Math.round(s.iv * 1.2)); s.due = now + s.iv * DAY; s.ef = Math.max(1.3, s.ef - 0.05); }
+  else { s.reps++; s.iv = s.reps === 1 ? 1 : s.reps === 2 ? 3 : Math.round(s.iv * s.ef); s.due = now + s.iv * DAY; }
+  // 静音模式下学过的卡记入"待开口"；出声模式补完后销账
+  if (state.mode === "mute" && g > 0 && !state.silentQueue.includes(current.id)) state.silentQueue.push(current.id);
+  if (state.mode === "speak" && fromDebt) state.silentQueue = state.silentQueue.filter(id => id !== current.id);
+  save(); next();
+}
+
+// ---------- TTS ----------
+let voice = null;
+function pickVoice() {
+  const vs = speechSynthesis.getVoices().filter(v => v.lang.startsWith("en"));
+  voice = vs.find(v => v.lang === "en-GB" && /Daniel|Serena|Kate/i.test(v.name)) || vs.find(v => v.lang === "en-GB") || vs[0] || null;
+}
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+let speakTimer = null;
+function speak(text) {
+  if (!("speechSynthesis" in window) || !text) return;
+  const ss = window.speechSynthesis;
+  ss.cancel();
+  clearTimeout(speakTimer);
+  // Chrome 的 cancel() 是异步的，紧跟 speak() 会被静默丢弃；延迟一帧再播，
+  // 否则连续点第二个发音按钮（如刚播完语块又点例句）时会没声音。
+  speakTimer = setTimeout(() => {
+    const u = new SpeechSynthesisUtterance(text);
+    if (voice) u.voice = voice;
+    u.lang = "en-GB"; u.rate = 0.92;
+    ss.speak(u);
+  }, 90);
+}
+
+// ---------- 书目页 ----------
+function renderBook() {
+  const counts = {};
+  allDecks().forEach(d => counts[d.topic] = d.cards.length);
+  const learned = {};
+  allCards().forEach(c => { const s = state.cards[c.id]; if (s && s.seen) learned[c.topic] = (learned[c.topic] || 0) + 1; });
+  let html = "";
+  BOOK_TOC.forEach(p => {
+    html += `<div class="part"><h3>Part ${p.part} · ${esc(p.cn)} ${esc(p.en)}</h3>`;
+    p.topics.forEach(t => {
+      const has = counts[t.n];
+      html += `<div class="topicrow ${has ? "has" : ""}" ${has ? `onclick="studyTopic(${t.n})"` : ""}>
+        <span class="num">${t.n}</span>
+        <div class="names"><b>${esc(t.cn)}</b><span>${esc(t.en)}</span></div>
+        <div class="meta">${has ? `<span class="count">${learned[t.n] || 0}/${has}</span><br>点击学习` : `书 P${t.page}<br>未拆解`}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById("pgBook").innerHTML = html;
+}
+function studyTopic(n) {
+  showPage("review");
+  const cards = allCards().filter(c => c.topic === n);
+  const now = Date.now();
+  queue = cards.filter(c => { const s = cardState(c.id); return !s.seen || s.due <= now; });
+  if (!queue.length) queue = cards.slice(0, 8);
+  next();
+}
+
+// ---------- 语料库存页 ----------
+let stockOpen = {}, stockOpenCard = null;
+function toggleStock(n) { stockOpen[n] = !stockOpen[n]; renderStock(); }
+function toggleStockCard(id) { stockOpenCard = stockOpenCard === id ? null : id; renderStock(); }
+function speakCard(id) { const c = allCards().find(x => x.id === id); if (c) speak(c.chunk.replace(/…/g, "")); }
+function renderStock() {
+  const now = Date.now();
+  const seen = allCards().filter(c => state.cards[c.id] && state.cards[c.id].seen);
+  let html = `<div class="subhead"><h2>语料库存 · ${seen.length} 条</h2><span class="subnote">已学过的语料，点击展开回顾</span></div>`;
+  if (!seen.length) html += `<p class="importhelp">还没有学过的语料。回「今日」刷几张卡，这里就会慢慢攒起来。</p>`;
+  BOOK_TOC.forEach(p => p.topics.forEach(t => {
+    const list = seen.filter(c => c.topic === t.n);
+    if (!list.length) return;
+    const open = !!stockOpen[t.n];
+    html += `<div class="acchead" onclick="toggleStock(${t.n})"><b>Topic ${t.n} · ${esc(t.cn)}</b><span>${list.length} 条 ${open ? "▴" : "▾"}</span></div>`;
+    if (open) list.forEach(c => {
+      const s = state.cards[c.id];
+      const badge = s.due <= now ? "待复习" : s.iv >= 21 ? "已巩固" : ivText(Math.max(1, Math.ceil((s.due - now) / DAY)));
+      const detail = stockOpenCard === c.id;
+      html += `<div class="chunkrow" onclick="toggleStockCard('${c.id}')">
+        <div class="cr-line"><div class="cr-main"><b>${esc(c.chunk)}</b><span>${esc(c.prompt)}</span></div><span class="cr-meta">${badge}</span></div>
+        ${detail ? `<div class="cr-detail">${esc(c.note)}<div class="example">${esc(c.example)}</div>
+          <div class="speakrow" style="justify-content:flex-start;margin-top:9px"><button onclick="event.stopPropagation();speakCard('${c.id}')">${ICO_SPK}发音</button></div></div>` : ""}
+      </div>`;
+    });
+  }));
+  document.getElementById("pgStock").innerHTML = html;
+}
+
+// ---------- 待开口页 ----------
+function renderDebt() {
+  const byId = Object.fromEntries(allCards().map(c => [c.id, c]));
+  const list = state.silentQueue.map(id => byId[id]).filter(Boolean);
+  let html = `<div class="subhead"><h2>待开口 · ${list.length} 条</h2><span class="subnote">静音时学过、还没开口的</span></div>`;
+  if (!list.length) {
+    html += `<p class="importhelp">没有欠账。静音模式下学过的卡会记在这里，等你方便出声时补上。</p>`;
+  } else {
+    html += `<button class="bigbtn" onclick="goSpeakDebt()">切到出声模式，逐条补开口</button>`;
+    list.forEach(c => { html += `<div class="chunkrow" style="margin-left:0;cursor:default"><div class="cr-line"><div class="cr-main"><b>${esc(c.chunk)}</b><span>${esc(c.prompt)}</span></div></div></div>`; });
+  }
+  document.getElementById("pgDebt").innerHTML = html;
+}
+function goSpeakDebt() {
+  state.mode = "speak"; save(); renderModes();
+  const byId = Object.fromEntries(allCards().map(c => [c.id, c]));
+  queue = state.silentQueue.map(id => byId[id]).filter(Boolean).map(c => ({ ...c, debt: true }));
+  next(); showPage("review");
+}
+
+// ---------- 今日待复习 ----------
+function startDueReview() {
+  const eod = new Date().setHours(23, 59, 59, 999);
+  const due = allCards().filter(c => { const s = state.cards[c.id]; return s && s.seen && s.due <= eod; });
+  if (!due.length) { alert("今天没有待复习的语料，刷新卡去吧。"); return; }
+  due.sort((a, b) => state.cards[a.id].due - state.cards[b.id].due);
+  queue = due; next(); showPage("review");
+}
+
+// ---------- 导入 ----------
+function doImport() {
+  const msg = document.getElementById("importMsg");
+  try {
+    const d = JSON.parse(document.getElementById("importBox").value);
+    if (!d.topic || !Array.isArray(d.cards) || !d.cards.length) throw new Error("需要 topic 和 cards 字段");
+    d.cards.forEach(c => { if (!c.prompt || !c.chunk) throw new Error("每张卡需要 prompt 和 chunk"); });
+    customDecks = customDecks.filter(x => x.topic !== d.topic).concat([d]);
+    save();
+    msg.textContent = `已导入 ${topicName(d.topic)}，共 ${d.cards.length} 张卡。`;
+    document.getElementById("importBox").value = "";
+    renderBook(); renderStats();
+  } catch (e) { msg.textContent = "导入失败：" + e.message; }
+}
+function resetProgress() {
+  if (!confirm("确定清空所有学习进度？（卡组保留）")) return;
+  state.cards = {}; state.silentQueue = []; save();
+  startSession(false); renderBook();
+}
+
+// ---------- 导航 ----------
+function showPage(p) {
+  document.getElementById("pgReview").style.display = p === "review" ? "flex" : "none";
+  ["book", "import", "stock", "debt"].forEach(k => {
+    document.getElementById("pg" + k[0].toUpperCase() + k.slice(1)).classList.toggle("show", p === k);
+  });
+  nvReview.classList.toggle("on", p === "review" || p === "stock" || p === "debt");
+  nvBook.classList.toggle("on", p === "book");
+  nvImport.classList.toggle("on", p === "import");
+  if (p === "book") renderBook();
+  if (p === "stock") renderStock();
+  if (p === "debt") renderDebt();
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll("#modes button").forEach(b => b.onclick = () => {
+  state.mode = b.dataset.m; save(); renderModes();
+  if (!current) startSession(false); else renderCard();
+});
+
+renderModes();
+startSession(false);
+
+// PWA：注册 Service Worker（仅在 https / 已托管时生效；file:// 下会安静跳过）
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
