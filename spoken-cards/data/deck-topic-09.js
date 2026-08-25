@@ -14,7 +14,7 @@ window.SEED_DECKS.push({
     { scene: "谈失联", prompt: "毕业后我们渐渐失去了联系。", chunk: "We lost touch after graduation.", note: "lose touch 表示不再联系；不要说 lose contact with each other in casual speech unless needed formally。", example: "We lost touch after graduation when we moved to different cities." },
     { scene: "谈重新联系", prompt: "十年后，我们又联系上了。", chunk: "We got back in touch ten years later.", note: "get back in touch 表示中断联系后重新联系。", example: "We got back in touch ten years later through social media." },
     { scene: "谈朋友争执", prompt: "我和她几年前闹翻了。", chunk: "I fell out with her a few years ago.", note: "fall out with sb 表示与某人争吵后关系破裂；过去式是 fell out。", example: "I fell out with her a few years ago over something trivial." },
-    { scene: "谈和好", prompt: "我们最终把关系修复好了。", chunk: "We eventually patched things up.", note: "patch things up 表示在争执后修复关系、重归于好。", example: "We eventually patched things up and agreed to start again." },
+    { scene: "谈和好", prompt: "我们最终和好了。", chunk: "We eventually patched things up.", note: "patch things up 表示在争执后修复关系、重归于好。", example: "We eventually patched things up and agreed to start again." },
     { scene: "谈帮忙", prompt: "困难的时候，她帮了我一把。", chunk: "She helped me out when things were difficult.", note: "help sb out 强调在困难或具体问题上给予实际帮助。", example: "She helped me out when I needed somewhere to stay." },
     { scene: "谈社交网络", prompt: "我都记不清自己关注了多少人。", chunk: "I've lost track of how many people I follow.", note: "lose track of 表示记不清数量、进度或某人的动向。", example: "I've lost track of how many group chats I'm in." },
     { scene: "谈突然变化", prompt: "他几乎是一夜之间走红的。", chunk: "He became famous almost overnight.", note: "overnight 可表示一夜之间，也常比喻变化发生得非常快。", example: "Her video went viral and she became famous almost overnight." },
