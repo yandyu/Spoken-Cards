@@ -209,20 +209,6 @@
   }
   .bigbtn:active { transform: scale(0.97); }
 
-  textarea {
-    width: 100%; min-height: 180px; background: var(--row); border: 0.5px solid var(--glass-border);
-    border-radius: 18px; color: var(--ink); font-size: 13px; padding: 13px;
-    font-family: ui-monospace, "SF Mono", monospace; outline: none;
-  }
-  textarea:focus { border-color: var(--tint); }
-  .btnrow { display: flex; gap: 8px; margin-top: 12px; }
-  .btnrow button {
-    flex: 1; border: 0; font-size: 15px; font-weight: 600; padding: 13px; border-radius: 999px;
-    cursor: pointer; font-family: inherit; background: var(--fill); color: var(--tint); transition: transform .15s ease;
-  }
-  .btnrow button:active { transform: scale(0.97); }
-  .btnrow button.primary { background: var(--tint); color: #fff; box-shadow: 0 5px 18px rgba(0, 122, 255, 0.28); }
-  .msg { font-size: 13px; margin-top: 10px; color: var(--ink-2); line-height: 1.6; }
   .importhelp { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; margin: 8px 6px 12px; }
 </style>
 </head>
@@ -253,136 +239,121 @@
 
   <div class="page" id="pgDebt"></div>
 
-  <div class="page" id="pgImport">
-    <p class="importhelp">全书 96 个 Topic 已内置，无需连接 AI，也不用逐个解锁。这里仅用于导入你自己制作或修改的 JSON 卡组；导入相同 Topic 时，自定义卡组会覆盖内置版本。</p>
-    <textarea id="importBox" placeholder='{"topic": 57, "cards": [{"scene": "...", "prompt": "...", "chunk": "...", "note": "...", "example": "..."}]}'></textarea>
-    <div class="btnrow">
-      <button class="primary" onclick="doImport()">导入卡组</button>
-      <button onclick="resetProgress()">重置学习进度</button>
-    </div>
-    <p class="msg" id="importMsg"></p>
-  </div>
-
   <nav>
     <button id="nvReview" class="on" onclick="showPage('review')"><svg class="ico" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="16" rx="2.5"/><rect x="4" y="5.5" width="12" height="16" rx="2.5" fill="var(--bg)"/><path d="M7.5 11h5M7.5 14.5h3.5"/></svg>今日</button>
     <button id="nvBook" onclick="showPage('book')"><svg class="ico" viewBox="0 0 24 24"><path d="M12 6.2C10.2 4.7 7.6 4.2 4 4.2v13.6c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2V4.2c-3.6 0-6.2.5-8 2z"/><path d="M12 6.2v13.6"/></svg>书目</button>
-    <button id="nvImport" onclick="showPage('import')"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3.5v8.5"/><path d="M8.5 8.5L12 12l3.5-3.5"/><path d="M4 13.5v3A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-3"/></svg>导入</button>
   </nav>
 </div>
 
-<script src="data/toc.js?v=6"></script>
-<script src="data/deck-topic-01.js?v=6"></script>
-<script src="data/deck-topic-02.js?v=6"></script>
-<script src="data/deck-topic-03.js?v=6"></script>
-<script src="data/deck-topic-04.js?v=6"></script>
-<script src="data/deck-topic-05.js?v=6"></script>
-<script src="data/deck-topic-06.js?v=6"></script>
-<script src="data/deck-topic-07.js?v=6"></script>
-<script src="data/deck-topic-08.js?v=6"></script>
-<script src="data/deck-topic-09.js?v=6"></script>
-<script src="data/deck-topic-10.js?v=6"></script>
-<script src="data/deck-topic-11.js?v=6"></script>
-<script src="data/deck-topic-12.js?v=6"></script>
-<script src="data/deck-topic-13.js?v=6"></script>
-<script src="data/deck-topic-14.js?v=6"></script>
-<script src="data/deck-topic-15.js?v=6"></script>
-<script src="data/deck-topic-16.js?v=6"></script>
-<script src="data/deck-topic-17.js?v=6"></script>
-<script src="data/deck-topic-18.js?v=6"></script>
-<script src="data/deck-topic-19.js?v=6"></script>
-<script src="data/deck-topic-20.js?v=6"></script>
-<script src="data/deck-topic-21.js?v=6"></script>
-<script src="data/deck-topic-22.js?v=6"></script>
-<script src="data/deck-topic-23.js?v=6"></script>
-<script src="data/deck-topic-24.js?v=6"></script>
-<script src="data/deck-topic-25.js?v=6"></script>
-<script src="data/deck-topic-26.js?v=6"></script>
-<script src="data/deck-topic-27.js?v=6"></script>
-<script src="data/deck-topic-28.js?v=6"></script>
-<script src="data/deck-topic-29.js?v=6"></script>
-<script src="data/deck-topic-30.js?v=6"></script>
-<script src="data/deck-topic-31.js?v=6"></script>
-<script src="data/deck-topic-32.js?v=6"></script>
-<script src="data/deck-topic-33.js?v=6"></script>
-<script src="data/deck-topic-34.js?v=6"></script>
-<script src="data/deck-topic-35.js?v=6"></script>
-<script src="data/deck-topic-36.js?v=6"></script>
-<script src="data/deck-topic-37.js?v=6"></script>
-<script src="data/deck-topic-38.js?v=6"></script>
-<script src="data/deck-topic-39.js?v=6"></script>
-<script src="data/deck-topic-40.js?v=6"></script>
-<script src="data/deck-topic-41.js?v=6"></script>
-<script src="data/deck-topic-42.js?v=6"></script>
-<script src="data/deck-topic-43.js?v=6"></script>
-<script src="data/deck-topic-44.js?v=6"></script>
-<script src="data/deck-topic-45.js?v=6"></script>
-<script src="data/deck-topic-46.js?v=6"></script>
-<script src="data/deck-topic-47.js?v=6"></script>
-<script src="data/deck-topic-48.js?v=6"></script>
-<script src="data/deck-topic-49.js?v=6"></script>
-<script src="data/deck-topic-50.js?v=6"></script>
-<script src="data/deck-topic-51.js?v=6"></script>
-<script src="data/deck-topic-52.js?v=6"></script>
-<script src="data/deck-topic-53.js?v=6"></script>
-<script src="data/deck-topic-54.js?v=6"></script>
-<script src="data/deck-topic-55.js?v=6"></script>
-<script src="data/deck-topic-56.js?v=6"></script>
-<script src="data/deck-topic-57.js?v=6"></script>
-<script src="data/deck-topic-58.js?v=6"></script>
-<script src="data/deck-topic-59.js?v=6"></script>
-<script src="data/deck-topic-60.js?v=6"></script>
-<script src="data/deck-topic-61.js?v=6"></script>
-<script src="data/deck-topic-62.js?v=6"></script>
-<script src="data/deck-topic-63.js?v=6"></script>
-<script src="data/deck-topic-64.js?v=6"></script>
-<script src="data/deck-topic-65.js?v=6"></script>
-<script src="data/deck-topic-66.js?v=6"></script>
-<script src="data/deck-topic-67.js?v=6"></script>
-<script src="data/deck-topic-68.js?v=6"></script>
-<script src="data/deck-topic-69.js?v=6"></script>
-<script src="data/deck-topic-70.js?v=6"></script>
-<script src="data/deck-topic-71.js?v=6"></script>
-<script src="data/deck-topic-72.js?v=6"></script>
-<script src="data/deck-topic-73.js?v=6"></script>
-<script src="data/deck-topic-74.js?v=6"></script>
-<script src="data/deck-topic-75.js?v=6"></script>
-<script src="data/deck-topic-76.js?v=6"></script>
-<script src="data/deck-topic-77.js?v=6"></script>
-<script src="data/deck-topic-78.js?v=6"></script>
-<script src="data/deck-topic-79.js?v=6"></script>
-<script src="data/deck-topic-80.js?v=6"></script>
-<script src="data/deck-topic-81.js?v=6"></script>
-<script src="data/deck-topic-82.js?v=6"></script>
-<script src="data/deck-topic-83.js?v=6"></script>
-<script src="data/deck-topic-84.js?v=6"></script>
-<script src="data/deck-topic-85.js?v=6"></script>
-<script src="data/deck-topic-86.js?v=6"></script>
-<script src="data/deck-topic-87.js?v=6"></script>
-<script src="data/deck-topic-88.js?v=6"></script>
-<script src="data/deck-topic-89.js?v=6"></script>
-<script src="data/deck-topic-90.js?v=6"></script>
-<script src="data/deck-topic-91.js?v=6"></script>
-<script src="data/deck-topic-92.js?v=6"></script>
-<script src="data/deck-topic-93.js?v=6"></script>
-<script src="data/deck-topic-94.js?v=6"></script>
-<script src="data/deck-topic-95.js?v=6"></script>
-<script src="data/deck-topic-96.js?v=6"></script>
+<script src="data/toc.js?v=7"></script>
+<script src="data/deck-topic-01.js?v=7"></script>
+<script src="data/deck-topic-02.js?v=7"></script>
+<script src="data/deck-topic-03.js?v=7"></script>
+<script src="data/deck-topic-04.js?v=7"></script>
+<script src="data/deck-topic-05.js?v=7"></script>
+<script src="data/deck-topic-06.js?v=7"></script>
+<script src="data/deck-topic-07.js?v=7"></script>
+<script src="data/deck-topic-08.js?v=7"></script>
+<script src="data/deck-topic-09.js?v=7"></script>
+<script src="data/deck-topic-10.js?v=7"></script>
+<script src="data/deck-topic-11.js?v=7"></script>
+<script src="data/deck-topic-12.js?v=7"></script>
+<script src="data/deck-topic-13.js?v=7"></script>
+<script src="data/deck-topic-14.js?v=7"></script>
+<script src="data/deck-topic-15.js?v=7"></script>
+<script src="data/deck-topic-16.js?v=7"></script>
+<script src="data/deck-topic-17.js?v=7"></script>
+<script src="data/deck-topic-18.js?v=7"></script>
+<script src="data/deck-topic-19.js?v=7"></script>
+<script src="data/deck-topic-20.js?v=7"></script>
+<script src="data/deck-topic-21.js?v=7"></script>
+<script src="data/deck-topic-22.js?v=7"></script>
+<script src="data/deck-topic-23.js?v=7"></script>
+<script src="data/deck-topic-24.js?v=7"></script>
+<script src="data/deck-topic-25.js?v=7"></script>
+<script src="data/deck-topic-26.js?v=7"></script>
+<script src="data/deck-topic-27.js?v=7"></script>
+<script src="data/deck-topic-28.js?v=7"></script>
+<script src="data/deck-topic-29.js?v=7"></script>
+<script src="data/deck-topic-30.js?v=7"></script>
+<script src="data/deck-topic-31.js?v=7"></script>
+<script src="data/deck-topic-32.js?v=7"></script>
+<script src="data/deck-topic-33.js?v=7"></script>
+<script src="data/deck-topic-34.js?v=7"></script>
+<script src="data/deck-topic-35.js?v=7"></script>
+<script src="data/deck-topic-36.js?v=7"></script>
+<script src="data/deck-topic-37.js?v=7"></script>
+<script src="data/deck-topic-38.js?v=7"></script>
+<script src="data/deck-topic-39.js?v=7"></script>
+<script src="data/deck-topic-40.js?v=7"></script>
+<script src="data/deck-topic-41.js?v=7"></script>
+<script src="data/deck-topic-42.js?v=7"></script>
+<script src="data/deck-topic-43.js?v=7"></script>
+<script src="data/deck-topic-44.js?v=7"></script>
+<script src="data/deck-topic-45.js?v=7"></script>
+<script src="data/deck-topic-46.js?v=7"></script>
+<script src="data/deck-topic-47.js?v=7"></script>
+<script src="data/deck-topic-48.js?v=7"></script>
+<script src="data/deck-topic-49.js?v=7"></script>
+<script src="data/deck-topic-50.js?v=7"></script>
+<script src="data/deck-topic-51.js?v=7"></script>
+<script src="data/deck-topic-52.js?v=7"></script>
+<script src="data/deck-topic-53.js?v=7"></script>
+<script src="data/deck-topic-54.js?v=7"></script>
+<script src="data/deck-topic-55.js?v=7"></script>
+<script src="data/deck-topic-56.js?v=7"></script>
+<script src="data/deck-topic-57.js?v=7"></script>
+<script src="data/deck-topic-58.js?v=7"></script>
+<script src="data/deck-topic-59.js?v=7"></script>
+<script src="data/deck-topic-60.js?v=7"></script>
+<script src="data/deck-topic-61.js?v=7"></script>
+<script src="data/deck-topic-62.js?v=7"></script>
+<script src="data/deck-topic-63.js?v=7"></script>
+<script src="data/deck-topic-64.js?v=7"></script>
+<script src="data/deck-topic-65.js?v=7"></script>
+<script src="data/deck-topic-66.js?v=7"></script>
+<script src="data/deck-topic-67.js?v=7"></script>
+<script src="data/deck-topic-68.js?v=7"></script>
+<script src="data/deck-topic-69.js?v=7"></script>
+<script src="data/deck-topic-70.js?v=7"></script>
+<script src="data/deck-topic-71.js?v=7"></script>
+<script src="data/deck-topic-72.js?v=7"></script>
+<script src="data/deck-topic-73.js?v=7"></script>
+<script src="data/deck-topic-74.js?v=7"></script>
+<script src="data/deck-topic-75.js?v=7"></script>
+<script src="data/deck-topic-76.js?v=7"></script>
+<script src="data/deck-topic-77.js?v=7"></script>
+<script src="data/deck-topic-78.js?v=7"></script>
+<script src="data/deck-topic-79.js?v=7"></script>
+<script src="data/deck-topic-80.js?v=7"></script>
+<script src="data/deck-topic-81.js?v=7"></script>
+<script src="data/deck-topic-82.js?v=7"></script>
+<script src="data/deck-topic-83.js?v=7"></script>
+<script src="data/deck-topic-84.js?v=7"></script>
+<script src="data/deck-topic-85.js?v=7"></script>
+<script src="data/deck-topic-86.js?v=7"></script>
+<script src="data/deck-topic-87.js?v=7"></script>
+<script src="data/deck-topic-88.js?v=7"></script>
+<script src="data/deck-topic-89.js?v=7"></script>
+<script src="data/deck-topic-90.js?v=7"></script>
+<script src="data/deck-topic-91.js?v=7"></script>
+<script src="data/deck-topic-92.js?v=7"></script>
+<script src="data/deck-topic-93.js?v=7"></script>
+<script src="data/deck-topic-94.js?v=7"></script>
+<script src="data/deck-topic-95.js?v=7"></script>
+<script src="data/deck-topic-96.js?v=7"></script>
 <script>
-const LS_STATE = "sc_state_v1", LS_DECKS = "sc_decks_v1";
+const LS_STATE = "sc_state_v1";
 const DAY = 86400000;
 const ICO_SPK = '<svg class="bico" viewBox="0 0 24 24"><path d="M11 5.5L6.5 9H4.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2L11 18.5z"/><path d="M14.5 9.5a4 4 0 0 1 0 5"/><path d="M17 7a7.5 7.5 0 0 1 0 10"/></svg>';
 let state = load(LS_STATE, { cards: {}, silentQueue: [], mode: "ear", newPerSession: 6 });
-let customDecks = load(LS_DECKS, []);
 let queue = [], current = null, flipped = false, fromDebt = false;
 
 function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
-function save() { localStorage.setItem(LS_STATE, JSON.stringify(state)); localStorage.setItem(LS_DECKS, JSON.stringify(customDecks)); }
+function save() { localStorage.setItem(LS_STATE, JSON.stringify(state)); }
 
 function allDecks() {
-  const seed = window.SEED_DECKS || [];
-  const map = {};
-  [...seed, ...customDecks].forEach(d => { map[d.topic] = d; });
-  return Object.values(map);
+  return window.SEED_DECKS || [];
 }
 function allCards() {
   const out = [];
@@ -616,39 +587,14 @@ function startDueReview() {
   queue = due; next(); showPage("review");
 }
 
-// ---------- 导入 ----------
-function doImport() {
-  const msg = document.getElementById("importMsg");
-  try {
-    const d = JSON.parse(document.getElementById("importBox").value);
-    if (!Number.isInteger(d.topic) || d.topic < 1 || d.topic > 96) throw new Error("topic 必须是 1–96 的整数");
-    if (!Array.isArray(d.cards) || !d.cards.length) throw new Error("cards 必须是非空数组");
-    const fields = ["scene", "prompt", "chunk", "note", "example"];
-    d.cards.forEach((c, i) => {
-      if (fields.some(f => typeof c[f] !== "string" || !c[f].trim())) throw new Error(`第 ${i + 1} 张卡缺少完整字段`);
-    });
-    customDecks = customDecks.filter(x => x.topic !== d.topic).concat([d]);
-    save();
-    msg.textContent = `已导入 ${topicName(d.topic)}，共 ${d.cards.length} 张卡。`;
-    document.getElementById("importBox").value = "";
-    renderBook(); renderStats();
-  } catch (e) { msg.textContent = "导入失败：" + e.message; }
-}
-function resetProgress() {
-  if (!confirm("确定清空所有学习进度？（卡组保留）")) return;
-  state.cards = {}; state.silentQueue = []; save();
-  startSession(false); renderBook();
-}
-
 // ---------- 导航 ----------
 function showPage(p) {
   document.getElementById("pgReview").style.display = p === "review" ? "flex" : "none";
-  ["book", "import", "stock", "debt"].forEach(k => {
+  ["book", "stock", "debt"].forEach(k => {
     document.getElementById("pg" + k[0].toUpperCase() + k.slice(1)).classList.toggle("show", p === k);
   });
   nvReview.classList.toggle("on", p === "review" || p === "stock" || p === "debt");
   nvBook.classList.toggle("on", p === "book");
-  nvImport.classList.toggle("on", p === "import");
   if (p === "book") renderBook();
   if (p === "stock") renderStock();
   if (p === "debt") renderDebt();
