@@ -96,7 +96,10 @@
   .stat b { font-size: 21px; font-weight: 600; display: block; letter-spacing: -0.3px; font-variant-numeric: tabular-nums; }
   .stat span { font-size: 11.5px; color: var(--ink-2); }
 
-  main { flex: 1; padding: 4px 16px 16px; display: flex; flex-direction: column; }
+  main {
+    flex: 1; padding: 4px 16px calc(92px + env(safe-area-inset-bottom));
+    display: flex; flex-direction: column;
+  }
   .cardbox { border-radius: 28px; padding: 20px; flex: 1; display: flex; flex-direction: column; min-height: 400px; }
   .card-top { display: flex; justify-content: flex-start; gap: 6px; align-items: center; font-size: 12px; color: var(--ink-3); margin-bottom: 8px; }
   .card-top > span:last-child { margin-left: auto; font-variant-numeric: tabular-nums; }
@@ -148,8 +151,8 @@
   }
 
   nav {
-    position: sticky; bottom: 12px; z-index: 10; margin: auto 14px 12px;
-    margin-bottom: calc(12px + env(safe-area-inset-bottom));
+    position: fixed; left: 50%; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 10;
+    width: calc(100% - 28px); max-width: 452px; margin: 0; transform: translateX(-50%);
     display: flex; border-radius: 999px; padding: 5px 6px;
     background: var(--glass-strong);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -164,7 +167,7 @@
   nav button.on { color: var(--tint); }
   nav button .ico { display: block; width: 21px; height: 21px; margin: 0 auto 2px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-  .page { display: none; padding: 4px 16px 20px; }
+  .page { display: none; padding: 4px 16px calc(96px + env(safe-area-inset-bottom)); }
   .page.show { display: block; }
   .part h3 { font-size: 13px; color: var(--ink-2); margin: 18px 6px 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2px; }
   .topicrow {
@@ -245,103 +248,103 @@
   </nav>
 </div>
 
-<script src="data/toc.js?v=7"></script>
-<script src="data/deck-topic-01.js?v=7"></script>
-<script src="data/deck-topic-02.js?v=7"></script>
-<script src="data/deck-topic-03.js?v=7"></script>
-<script src="data/deck-topic-04.js?v=7"></script>
-<script src="data/deck-topic-05.js?v=7"></script>
-<script src="data/deck-topic-06.js?v=7"></script>
-<script src="data/deck-topic-07.js?v=7"></script>
-<script src="data/deck-topic-08.js?v=7"></script>
-<script src="data/deck-topic-09.js?v=7"></script>
-<script src="data/deck-topic-10.js?v=7"></script>
-<script src="data/deck-topic-11.js?v=7"></script>
-<script src="data/deck-topic-12.js?v=7"></script>
-<script src="data/deck-topic-13.js?v=7"></script>
-<script src="data/deck-topic-14.js?v=7"></script>
-<script src="data/deck-topic-15.js?v=7"></script>
-<script src="data/deck-topic-16.js?v=7"></script>
-<script src="data/deck-topic-17.js?v=7"></script>
-<script src="data/deck-topic-18.js?v=7"></script>
-<script src="data/deck-topic-19.js?v=7"></script>
-<script src="data/deck-topic-20.js?v=7"></script>
-<script src="data/deck-topic-21.js?v=7"></script>
-<script src="data/deck-topic-22.js?v=7"></script>
-<script src="data/deck-topic-23.js?v=7"></script>
-<script src="data/deck-topic-24.js?v=7"></script>
-<script src="data/deck-topic-25.js?v=7"></script>
-<script src="data/deck-topic-26.js?v=7"></script>
-<script src="data/deck-topic-27.js?v=7"></script>
-<script src="data/deck-topic-28.js?v=7"></script>
-<script src="data/deck-topic-29.js?v=7"></script>
-<script src="data/deck-topic-30.js?v=7"></script>
-<script src="data/deck-topic-31.js?v=7"></script>
-<script src="data/deck-topic-32.js?v=7"></script>
-<script src="data/deck-topic-33.js?v=7"></script>
-<script src="data/deck-topic-34.js?v=7"></script>
-<script src="data/deck-topic-35.js?v=7"></script>
-<script src="data/deck-topic-36.js?v=7"></script>
-<script src="data/deck-topic-37.js?v=7"></script>
-<script src="data/deck-topic-38.js?v=7"></script>
-<script src="data/deck-topic-39.js?v=7"></script>
-<script src="data/deck-topic-40.js?v=7"></script>
-<script src="data/deck-topic-41.js?v=7"></script>
-<script src="data/deck-topic-42.js?v=7"></script>
-<script src="data/deck-topic-43.js?v=7"></script>
-<script src="data/deck-topic-44.js?v=7"></script>
-<script src="data/deck-topic-45.js?v=7"></script>
-<script src="data/deck-topic-46.js?v=7"></script>
-<script src="data/deck-topic-47.js?v=7"></script>
-<script src="data/deck-topic-48.js?v=7"></script>
-<script src="data/deck-topic-49.js?v=7"></script>
-<script src="data/deck-topic-50.js?v=7"></script>
-<script src="data/deck-topic-51.js?v=7"></script>
-<script src="data/deck-topic-52.js?v=7"></script>
-<script src="data/deck-topic-53.js?v=7"></script>
-<script src="data/deck-topic-54.js?v=7"></script>
-<script src="data/deck-topic-55.js?v=7"></script>
-<script src="data/deck-topic-56.js?v=7"></script>
-<script src="data/deck-topic-57.js?v=7"></script>
-<script src="data/deck-topic-58.js?v=7"></script>
-<script src="data/deck-topic-59.js?v=7"></script>
-<script src="data/deck-topic-60.js?v=7"></script>
-<script src="data/deck-topic-61.js?v=7"></script>
-<script src="data/deck-topic-62.js?v=7"></script>
-<script src="data/deck-topic-63.js?v=7"></script>
-<script src="data/deck-topic-64.js?v=7"></script>
-<script src="data/deck-topic-65.js?v=7"></script>
-<script src="data/deck-topic-66.js?v=7"></script>
-<script src="data/deck-topic-67.js?v=7"></script>
-<script src="data/deck-topic-68.js?v=7"></script>
-<script src="data/deck-topic-69.js?v=7"></script>
-<script src="data/deck-topic-70.js?v=7"></script>
-<script src="data/deck-topic-71.js?v=7"></script>
-<script src="data/deck-topic-72.js?v=7"></script>
-<script src="data/deck-topic-73.js?v=7"></script>
-<script src="data/deck-topic-74.js?v=7"></script>
-<script src="data/deck-topic-75.js?v=7"></script>
-<script src="data/deck-topic-76.js?v=7"></script>
-<script src="data/deck-topic-77.js?v=7"></script>
-<script src="data/deck-topic-78.js?v=7"></script>
-<script src="data/deck-topic-79.js?v=7"></script>
-<script src="data/deck-topic-80.js?v=7"></script>
-<script src="data/deck-topic-81.js?v=7"></script>
-<script src="data/deck-topic-82.js?v=7"></script>
-<script src="data/deck-topic-83.js?v=7"></script>
-<script src="data/deck-topic-84.js?v=7"></script>
-<script src="data/deck-topic-85.js?v=7"></script>
-<script src="data/deck-topic-86.js?v=7"></script>
-<script src="data/deck-topic-87.js?v=7"></script>
-<script src="data/deck-topic-88.js?v=7"></script>
-<script src="data/deck-topic-89.js?v=7"></script>
-<script src="data/deck-topic-90.js?v=7"></script>
-<script src="data/deck-topic-91.js?v=7"></script>
-<script src="data/deck-topic-92.js?v=7"></script>
-<script src="data/deck-topic-93.js?v=7"></script>
-<script src="data/deck-topic-94.js?v=7"></script>
-<script src="data/deck-topic-95.js?v=7"></script>
-<script src="data/deck-topic-96.js?v=7"></script>
+<script src="data/toc.js?v=8"></script>
+<script src="data/deck-topic-01.js?v=8"></script>
+<script src="data/deck-topic-02.js?v=8"></script>
+<script src="data/deck-topic-03.js?v=8"></script>
+<script src="data/deck-topic-04.js?v=8"></script>
+<script src="data/deck-topic-05.js?v=8"></script>
+<script src="data/deck-topic-06.js?v=8"></script>
+<script src="data/deck-topic-07.js?v=8"></script>
+<script src="data/deck-topic-08.js?v=8"></script>
+<script src="data/deck-topic-09.js?v=8"></script>
+<script src="data/deck-topic-10.js?v=8"></script>
+<script src="data/deck-topic-11.js?v=8"></script>
+<script src="data/deck-topic-12.js?v=8"></script>
+<script src="data/deck-topic-13.js?v=8"></script>
+<script src="data/deck-topic-14.js?v=8"></script>
+<script src="data/deck-topic-15.js?v=8"></script>
+<script src="data/deck-topic-16.js?v=8"></script>
+<script src="data/deck-topic-17.js?v=8"></script>
+<script src="data/deck-topic-18.js?v=8"></script>
+<script src="data/deck-topic-19.js?v=8"></script>
+<script src="data/deck-topic-20.js?v=8"></script>
+<script src="data/deck-topic-21.js?v=8"></script>
+<script src="data/deck-topic-22.js?v=8"></script>
+<script src="data/deck-topic-23.js?v=8"></script>
+<script src="data/deck-topic-24.js?v=8"></script>
+<script src="data/deck-topic-25.js?v=8"></script>
+<script src="data/deck-topic-26.js?v=8"></script>
+<script src="data/deck-topic-27.js?v=8"></script>
+<script src="data/deck-topic-28.js?v=8"></script>
+<script src="data/deck-topic-29.js?v=8"></script>
+<script src="data/deck-topic-30.js?v=8"></script>
+<script src="data/deck-topic-31.js?v=8"></script>
+<script src="data/deck-topic-32.js?v=8"></script>
+<script src="data/deck-topic-33.js?v=8"></script>
+<script src="data/deck-topic-34.js?v=8"></script>
+<script src="data/deck-topic-35.js?v=8"></script>
+<script src="data/deck-topic-36.js?v=8"></script>
+<script src="data/deck-topic-37.js?v=8"></script>
+<script src="data/deck-topic-38.js?v=8"></script>
+<script src="data/deck-topic-39.js?v=8"></script>
+<script src="data/deck-topic-40.js?v=8"></script>
+<script src="data/deck-topic-41.js?v=8"></script>
+<script src="data/deck-topic-42.js?v=8"></script>
+<script src="data/deck-topic-43.js?v=8"></script>
+<script src="data/deck-topic-44.js?v=8"></script>
+<script src="data/deck-topic-45.js?v=8"></script>
+<script src="data/deck-topic-46.js?v=8"></script>
+<script src="data/deck-topic-47.js?v=8"></script>
+<script src="data/deck-topic-48.js?v=8"></script>
+<script src="data/deck-topic-49.js?v=8"></script>
+<script src="data/deck-topic-50.js?v=8"></script>
+<script src="data/deck-topic-51.js?v=8"></script>
+<script src="data/deck-topic-52.js?v=8"></script>
+<script src="data/deck-topic-53.js?v=8"></script>
+<script src="data/deck-topic-54.js?v=8"></script>
+<script src="data/deck-topic-55.js?v=8"></script>
+<script src="data/deck-topic-56.js?v=8"></script>
+<script src="data/deck-topic-57.js?v=8"></script>
+<script src="data/deck-topic-58.js?v=8"></script>
+<script src="data/deck-topic-59.js?v=8"></script>
+<script src="data/deck-topic-60.js?v=8"></script>
+<script src="data/deck-topic-61.js?v=8"></script>
+<script src="data/deck-topic-62.js?v=8"></script>
+<script src="data/deck-topic-63.js?v=8"></script>
+<script src="data/deck-topic-64.js?v=8"></script>
+<script src="data/deck-topic-65.js?v=8"></script>
+<script src="data/deck-topic-66.js?v=8"></script>
+<script src="data/deck-topic-67.js?v=8"></script>
+<script src="data/deck-topic-68.js?v=8"></script>
+<script src="data/deck-topic-69.js?v=8"></script>
+<script src="data/deck-topic-70.js?v=8"></script>
+<script src="data/deck-topic-71.js?v=8"></script>
+<script src="data/deck-topic-72.js?v=8"></script>
+<script src="data/deck-topic-73.js?v=8"></script>
+<script src="data/deck-topic-74.js?v=8"></script>
+<script src="data/deck-topic-75.js?v=8"></script>
+<script src="data/deck-topic-76.js?v=8"></script>
+<script src="data/deck-topic-77.js?v=8"></script>
+<script src="data/deck-topic-78.js?v=8"></script>
+<script src="data/deck-topic-79.js?v=8"></script>
+<script src="data/deck-topic-80.js?v=8"></script>
+<script src="data/deck-topic-81.js?v=8"></script>
+<script src="data/deck-topic-82.js?v=8"></script>
+<script src="data/deck-topic-83.js?v=8"></script>
+<script src="data/deck-topic-84.js?v=8"></script>
+<script src="data/deck-topic-85.js?v=8"></script>
+<script src="data/deck-topic-86.js?v=8"></script>
+<script src="data/deck-topic-87.js?v=8"></script>
+<script src="data/deck-topic-88.js?v=8"></script>
+<script src="data/deck-topic-89.js?v=8"></script>
+<script src="data/deck-topic-90.js?v=8"></script>
+<script src="data/deck-topic-91.js?v=8"></script>
+<script src="data/deck-topic-92.js?v=8"></script>
+<script src="data/deck-topic-93.js?v=8"></script>
+<script src="data/deck-topic-94.js?v=8"></script>
+<script src="data/deck-topic-95.js?v=8"></script>
+<script src="data/deck-topic-96.js?v=8"></script>
 <script>
 const LS_STATE = "sc_state_v1";
 const DAY = 86400000;
