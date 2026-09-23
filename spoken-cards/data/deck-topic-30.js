@@ -12,7 +12,7 @@ window.SEED_DECKS.push({ topic: 30, cards: [
   { scene: "拿出用品", prompt: "我拿出了医疗包里的所有东西。", chunk: "I broke out everything in my medical pack.", note: "break out sth 可表示拿出并开始使用存放着的东西。", example: "We broke out the blankets when it got cold." },
   { scene: "身体突然出问题", prompt: "我的腰又突然不行了。", chunk: "My back's gone again.", note: "身体部位 + has gone 可非正式表示该部位突然疼痛或失去正常功能。", example: "My knee's gone, so I can't run today." },
   { scene: "让团队失望", prompt: "我感觉自己让团队失望了。", chunk: "I felt I was letting the side down.", note: "let the side down 表示让所属团队或群体失望。", example: "He came to work ill because he didn't want to let the side down." },
-  { scene: "连锁反应", prompt: "缺乏睡眠会产生连锁反应。", chunk: "Lack of sleep creates a domino effect.", note: "a domino effect 指一个变化引发一连串后续影响。", example: "One missed delivery caused a domino effect." },
+  { scene: "连锁反应", prompt: "睡眠不足会让一连串问题接着发生。", chunk: "Lack of sleep can set off a chain reaction.", note: "set off a chain reaction = 引发一连串连锁反应；口语里比 domino effect 更常见。", example: "Lack of sleep can set off a chain reaction: you feel tired, impatient and unfocused." },
   { scene: "无法清晰思考", prompt: "累的时候很难清晰思考。", chunk: "It's hard to think straight when you're tired.", note: "think straight 表示清晰、理性地思考。", example: "I was too worried to think straight." },
   { scene: "过一天算一天", prompt: "他们过着一天算一天的生活。", chunk: "They live a day-by-day existence.", note: "a day-by-day existence 表示只应付眼前每一天的生活状态。", example: "During treatment, he lived a day-by-day existence." },
   { scene: "勉强维持", prompt: "她努力维持一些正常生活的样子。", chunk: "She tries to maintain some semblance of normal life.", note: "a semblance of 表示表面上或有限程度上的某种状态。", example: "We tried to keep some semblance of routine." },

@@ -3,7 +3,7 @@ window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 48, cards: [
   { scene: "白领工作", prompt: "她有一份白领工作。", chunk: "She has a white-collar job.", note: "white-collar 通常指办公室、管理或专业性工作。", example: "Many white-collar workers now work from home." },
   { scene: "蓝领工作", prompt: "他来自一个蓝领家庭。", chunk: "He comes from a blue-collar family.", note: "blue-collar 通常指体力或技术工种。", example: "The town depends on blue-collar industries." },
-  { scene: "体力劳动者", prompt: "这份工作需要熟练的体力劳动者。", chunk: "The job requires skilled manual workers.", note: "manual worker 指主要从事体力劳动的人。", example: "Manual workers must wear protective equipment." },
+  { scene: "体力劳动者", prompt: "这份工作需要有实际操作经验的人。", chunk: "The job calls for people with solid hands-on skills.", note: "hands-on skills = 实操能力；calls for 比 requires 更像口语。", example: "The job calls for people with solid hands-on skills, not just a degree." },
   { scene: "团队成员", prompt: "我一直是一个善于合作的团队成员。", chunk: "I've always been a good team player.", note: "team player 指能与同事有效合作的人。", example: "Every employer wants a reliable team player." },
   { scene: "团队精神", prompt: "这家公司有很好的团队精神。", chunk: "The company has excellent team spirit.", note: "team spirit 指团队成员的合作意识和凝聚力。", example: "Team-building exercises improved our team spirit." },
   { scene: "从一开始", prompt: "从一开始，我就能看出这里有很好的家庭氛围。", chunk: "Right off the bat, I can tell there's a good family atmosphere here.", note: "right off the bat 是非正式表达，表示立刻、从一开始。", example: "Right off the bat, the interviewer made me feel welcome." },

@@ -2,9 +2,9 @@
 window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 65, cards: [
   { scene: "持怀疑态度", prompt: "有人说看见不明飞行物时，我会非常怀疑。", chunk: "I'm very sceptical when someone says they saw a UFO.", note: "sceptical 是英式拼法；美式为 skeptical。", example: "Stories about aliens are often met with scepticism." },
-  { scene: "无法解释", prompt: "那仍然是一种无法解释的现象。", chunk: "It remains an unexplained phenomenon.", note: "phenomenon 的复数是 phenomena。", example: "Scientists investigated the strange phenomenon." },
+  { scene: "无法解释", prompt: "那仍然是我们解释不了的事情。", chunk: "It's still something we can't explain.", note: "把 phenomenon 换成 something we can't explain，保留意思但更像真实对话。", example: "It's still something we can't explain, even with today's technology." },
   { scene: "完全说得通", prompt: "宇宙中别处存在生命完全说得通。", chunk: "It makes total sense that there's life elsewhere in the universe.", note: "make sense 表示合乎逻辑、说得通。", example: "The theory makes sense when you consider the size of space." },
-  { scene: "置于背景看", prompt: "宇宙的浩瀚让外星来访这个观念有了现实的尺度。", chunk: "The vastness of space puts the idea of alien visitors into perspective.", note: "put sth into perspective 表示把事物放到适当背景中衡量。", example: "The age of the universe puts human history into perspective." },
+  { scene: "置于背景看", prompt: "宇宙这么大，所以外星人来访也没那么难想象。", chunk: "The sheer size of space makes alien visitors seem less far-fetched.", note: "less far-fetched = 没那么离谱；比 put into perspective 更易用于口语讨论。", example: "The sheer size of space makes alien visitors seem less far-fetched." },
   { scene: "更不用说", prompt: "与我们的银河系相比，地球微不足道，更不用说整个宇宙了。", chunk: "Earth is insignificant compared with our galaxy, let alone the universe.", note: "let alone 用于引出更不可能或程度更大的情况。", example: "We can barely reach the Moon, let alone another solar system." },
   { scene: "最关键的问题", prompt: "最关键的问题是，他们为什么会想来这里？", chunk: "The big question is why they would want to come here.", note: "the big question 指最需要回答的核心问题。", example: "The big question is whether the sighting was real." },
   { scene: "勉强做到", prompt: "我们连去月球都勉强做得到。", chunk: "We can barely get to the Moon.", note: "barely 表示勉强、几乎不。", example: "The signal was so weak that we could barely detect it." },

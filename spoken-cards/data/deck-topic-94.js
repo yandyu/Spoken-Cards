@@ -12,9 +12,9 @@ window.SEED_DECKS.push({ topic: 94, cards: [
   { scene: "正式安排", prompt: "你必须至少提前半小时到达驾考中心。", chunk: "You are to be at the driving test centre at least half an hour early.", note: "be to do 可表达正式安排、命令或计划。", example: "The head teacher is to meet the parents tomorrow." },
   { scene: "很可能", prompt: "我明天很可能会去看足球赛。", chunk: "I may well be going to watch the match tomorrow.", note: "may well 表示很可能。", example: "She might well be offered the job." },
   { scene: "征求第二意见", prompt: "她想听听别人对作品布局的第二个意见。", chunk: "She wants a second opinion on the layout of her work.", note: "a second opinion 指另一个人的独立看法或专业意见。", example: "I asked another designer for a second opinion." },
-  { scene: "事业巅峰", prompt: "这将是她迄今事业的巅峰。", chunk: "It will be the pinnacle of her career so far.", note: "the pinnacle of sth 指某事达到的最高点。", example: "Winning the award was the pinnacle of his career." },
+  { scene: "事业巅峰", prompt: "这会是她目前职业生涯的最高点。", chunk: "This will be the high point of her career so far.", note: "high point 比 pinnacle 更常见、更口语。", example: "Winning this award will be the high point of her career so far." },
   { scene: "前途远大", prompt: "我觉得她将来会很有成就。", chunk: "I've got a feeling she's going to go far.", note: "go far 表示取得很大成功、前途远大。", example: "With that talent, he'll go far." },
   { scene: "不宜开车", prompt: "喝过酒后，她不会处于适合开车的状态。", chunk: "After drinking, she won't be in any fit state to get behind the wheel.", note: "be in a fit state to do 表示身体或精神状态适合做某事；get behind the wheel 指开车。", example: "He was too tired to be in a fit state to drive." },
   { scene: "选择太多", prompt: "在香港购物时，你会有太多选择。", chunk: "You're spoilt for choice when shopping in Hong Kong.", note: "be spoilt for choice 表示可选项多到难以决定。", example: "Visitors are spoilt for choice when it comes to restaurants." },
-  { scene: "无足轻重", prompt: "我们目前的努力看起来似乎无足轻重。", chunk: "Our efforts seem inconsequential at the moment.", note: "inconsequential 形容影响很小、不重要。", example: "Small advances may seem inconsequential but add up over time." }
+  { scene: "无足轻重", prompt: "我们现在做的这些努力，好像还没有带来多大变化。", chunk: "Our efforts don't seem to be making much difference at the moment.", note: "make much difference 是表达“起作用/带来变化”的常用口语。", example: "Our efforts don't seem to be making much difference at the moment." }
 ] });

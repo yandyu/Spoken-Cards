@@ -1,12 +1,12 @@
 // Topic 85 · Cities 城市
 window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 85, cards: [
-  { scene: "基础设施", prompt: "这座城市需要改善交通和供水基础设施。", chunk: "The city needs to improve its transport and water infrastructure.", note: "infrastructure 指交通、能源、供水等维持社会运转的基础系统。", example: "Reliable infrastructure attracts new businesses." },
+  { scene: "基础设施", prompt: "这座城市需要改善道路和供水系统。", chunk: "The city needs to improve its roads and water systems.", note: "roads and water systems 比 infrastructure 更具体，也更容易说。", example: "The city needs to improve its roads and water systems." },
   { scene: "优缺点", prompt: "每一种居住地都有它的优点和缺点。", chunk: "Every place to live has its ups and downs.", note: "ups and downs 指好坏两方面或起伏。", example: "City life has its ups and downs." },
   { scene: "顺路来访", prompt: "朋友们会经常顺路来看我。", chunk: "Friends would drop by all the time.", note: "drop by 表示未经长时间停留的顺便来访。", example: "Neighbours often drop by at weekends." },
   { scene: "四面八方", prompt: "周末朋友会从四面八方过来。", chunk: "Friends would arrive left, right and centre at weekends.", note: "left, right and centre 表示到处、四面八方，数量很多。", example: "New cafés are opening left, right and centre." },
   { scene: "更能忍受", prompt: "一个安静的区域会让城市生活更能忍受。", chunk: "A quiet area would make city life more bearable.", note: "bearable 形容虽不理想但可以忍受。", example: "Good public transport makes the commute bearable." },
-  { scene: "首要考虑", prompt: "如果你有家庭，安全永远是最重要的考虑因素。", chunk: "If you have a family, safety is always the most important consideration.", note: "consideration 指作决定时需要考虑的因素。", example: "Cost is another important consideration." },
+  { scene: "首要考虑", prompt: "如果你有家人，安全永远是第一位的。", chunk: "If you have a family, safety comes first.", note: "safety comes first 是高频、自然的口语表达。", example: "If you have a family, safety comes first." },
   { scene: "偏僻乡间", prompt: "住在偏僻乡间需要某种特定性格。", chunk: "It takes a certain kind of person to live out in the sticks.", note: "out in the sticks 是非正式表达，指偏远乡间。", example: "He moved from downtown to a cottage in the sticks." },
   { scene: "主要缺点", prompt: "孤立感肯定是最大的缺点。", chunk: "The isolation has to be the biggest drawback.", note: "drawback 指缺点或不利之处。", example: "Traffic is the main drawback of living downtown." },
   { scene: "两全其美", prompt: "住在郊区意味着你能兼得城市和乡村的优点。", chunk: "Living in the suburbs means you have the best of both worlds.", note: "have the best of both worlds 表示同时享有两种选择的优点。", example: "The neighbourhood offers the best of both worlds." },

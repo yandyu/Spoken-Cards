@@ -15,5 +15,5 @@ window.SEED_DECKS.push({ topic: 87, cards: [
   { scene: "守法公民", prompt: "作为守法公民，他把看到的事告诉了警方。", chunk: "As a law-abiding citizen, he told the police what he'd seen.", note: "law-abiding 形容遵守法律的。", example: "Most residents are law-abiding citizens." },
   { scene: "记下信息", prompt: "警方记下了他的详细信息。", chunk: "The police took down his details.", note: "take down information 表示把信息记录下来。", example: "The officer took down the witness's name." },
   { scene: "有罪一方", prompt: "结果证明，有过错的一方来自当地一个大家族。", chunk: "It turned out that the guilty party came from a large local family.", note: "the guilty party 指对错误或违法行为负有责任的一方。", example: "The court identified the guilty party." },
-  { scene: "防碎玻璃", prompt: "最后，他不得不安装特别的防碎玻璃。", chunk: "In the end, he had to install special shatterproof windows.", note: "shatterproof 形容不易破碎的。", example: "The shop replaced its windows with shatterproof glass." }
+  { scene: "防碎玻璃", prompt: "最后，他不得不装上不会碎的特殊玻璃窗。", chunk: "In the end, he had to install windows that wouldn't shatter.", note: "用定语从句解释 shatterproof，学习者更容易在新场景里迁移。", example: "In the end, he had to install windows that wouldn't shatter." }
 ] });

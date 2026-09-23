@@ -2,18 +2,18 @@
 window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 91, cards: [
   { scene: "民主制度", prompt: "在民主制度下，公民通过选举投票。", chunk: "In a democracy, citizens vote in elections.", note: "democracy 指公民直接或通过代表参与治理的制度。", example: "A democratic system depends on fair elections." },
-  { scene: "共和国", prompt: "共和国的国家元首不是世袭君主。", chunk: "A republic does not have a hereditary monarch as its head of state.", note: "republic 指国家元首不是世袭君主的政体。", example: "The country became a republic after the revolution." },
-  { scene: "君主制", prompt: "英国实行君主立宪制。", chunk: "The UK has a constitutional monarchy.", note: "monarchy 指由君主担任国家元首的制度。", example: "The monarch's powers are limited by law." },
-  { scene: "寡头政治", prompt: "寡头政治由少数有权势的人掌控。", chunk: "An oligarchy is controlled by a small group of powerful people.", note: "oligarchy 指权力集中在少数人手中的政体。", example: "Critics say wealth has created an oligarchy." },
-  { scene: "独裁统治", prompt: "独裁统治把权力集中在一个统治者手中。", chunk: "An autocracy concentrates power in a single ruler.", note: "autocracy 指一个人拥有不受有效制约的权力。", example: "The autocratic government restricted protests." },
+  { scene: "共和国", prompt: "共和国不会由世袭的国王或女王担任国家元首。", chunk: "A republic doesn't have a king or queen who inherits the job.", note: "用 who inherits the job 解释 hereditary，避免只背抽象形容词。", example: "A republic doesn't have a king or queen who inherits the job." },
+  { scene: "君主制", prompt: "英国有君主，但君主不负责日常治理国家。", chunk: "The UK has a monarchy, but the monarch doesn't run the government.", note: "完整对比句更像口语，也更能说清 constitutional monarchy 的含义。", example: "The UK has a monarchy, but the monarch doesn't run the government." },
+  { scene: "寡头政治", prompt: "寡头政治就是由一小群有权势的人控制。", chunk: "An oligarchy is run by a small group of powerful people.", note: "is run by 比 is controlled by 更口语。", example: "An oligarchy is run by a small group of powerful people." },
+  { scene: "独裁统治", prompt: "独裁制度就是权力集中在一个人手里。", chunk: "An autocracy is run by one ruler.", note: "is run by one ruler 更直接，也更适合初次开口。", example: "An autocracy is run by one ruler with very little opposition." },
   { scene: "根源很深", prompt: "王室的根源深深扎在德国贵族之中。", chunk: "The royal family's roots go deep into the German aristocracy.", note: "roots go deep into sth 表示历史渊源深厚。", example: "The movement's roots go deep into local history." },
-  { scene: "死敌", prompt: "两国多年来一直是死敌。", chunk: "The two countries were sworn enemies for years.", note: "sworn enemies 指彼此坚决敌对的双方。", example: "Former sworn enemies later became allies." },
-  { scene: "高级军官", prompt: "他是军队里的一名高级军官。", chunk: "He was a high-ranking officer in the army.", note: "high-ranking 形容职位或军衔高的。", example: "Several high-ranking officials attended the meeting." },
+  { scene: "死敌", prompt: "这两个国家多年来一直互相敌视。", chunk: "The two countries had been enemies for years.", note: "had been enemies 比 sworn enemies 更常用，也降低了记忆负担。", example: "The two countries had been enemies for years before they finally made peace." },
+  { scene: "高级军官", prompt: "他是军队里的高级军官。", chunk: "He was a senior officer in the army.", note: "senior officer 是更常见的搭配。", example: "He was a senior officer in the army before he retired." },
   { scene: "追溯到很久以前", prompt: "王室的德国血统实际上可以追溯到很久以前。", chunk: "The royal family's German roots actually go way back.", note: "go way back 表示追溯到很久以前。", example: "Their political alliance goes way back." },
-  { scene: "关系广泛", prompt: "她来自德国贵族中一个关系广泛且有影响力的家族。", chunk: "She came from a well-connected and influential aristocratic family.", note: "well-connected 指与有权势者关系广泛的。", example: "The candidate comes from a well-connected family." },
+  { scene: "关系广泛", prompt: "她出身于一个有权有势、人脉很广的贵族家庭。", chunk: "She came from a powerful, well-connected family.", note: "去掉 aristocratic 等低频修饰词，保留口语真正要表达的重点。", example: "She came from a powerful, well-connected family." },
   { scene: "改名", prompt: "王室把姓氏改为温莎，让它听起来不再像德国姓氏。", chunk: "The royal family changed its name to Windsor so it no longer sounded German.", note: "change your name to ... 表示把名字改为……。", example: "The party changed its name after the election." },
-  { scene: "几乎消失", prompt: "他们血统的真相几乎完全消失了。", chunk: "The truth about their lineage all but vanished.", note: "all but + 动词 表示几乎完全。", example: "Public trust all but disappeared." },
-  { scene: "远离公众视野", prompt: "她们在远离公众视野的机构里度过一生。", chunk: "They lived their lives in an institution away from the public eye.", note: "away from the public eye 表示避开公众关注。", example: "The former leader now lives away from the public eye." },
+  { scene: "几乎消失", prompt: "关于他们家族血统的真相差点就消失了。", chunk: "The truth about their family line almost disappeared.", note: "family line / almost disappeared 比 lineage / all but vanished 更容易迁移。", example: "The truth about their family line almost disappeared over time." },
+  { scene: "远离公众视野", prompt: "她们一生都住在远离公众关注的机构里。", chunk: "They spent their lives in an institution away from public attention.", note: "public attention 比 public eye 更直观；spend their lives 也更自然。", example: "They spent their lives in an institution away from public attention." },
   { scene: "事情还很多", prompt: "类似的事情还有很多。", chunk: "The list goes on.", note: "the list goes on 表示还能继续列举许多同类例子。", example: "There are problems with transparency, funding and lobbying—the list goes on." },
   { scene: "政府透明", prompt: "所有政府都应该公开透明。", chunk: "All governments should be transparent.", note: "transparent 在政治语境中表示决策和信息公开、可查。", example: "Voters expect a transparent election process." }
 ] });

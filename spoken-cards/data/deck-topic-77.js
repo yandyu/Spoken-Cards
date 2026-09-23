@@ -3,7 +3,7 @@ window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 77, cards: [
   { scene: "环境友好", prompt: "我们需要使用更环保的产品。", chunk: "We need to use more environmentally friendly products.", note: "environmentally friendly 形容对环境危害较小。", example: "Public transport is more environmentally friendly than driving." },
   { scene: "化石燃料", prompt: "汽车燃烧化石燃料并排放废气。", chunk: "Cars burn fossil fuels and produce exhaust fumes.", note: "fossil fuels 包括煤、石油和天然气；exhaust fumes 指尾气。", example: "Fossil-fuel emissions contribute to global warming." },
-  { scene: "温室效应", prompt: "温室气体会加强温室效应。", chunk: "Greenhouse gases intensify the greenhouse effect.", note: "greenhouse effect 指大气中的气体使地表保温的现象。", example: "Carbon dioxide is a major greenhouse gas." },
+  { scene: "温室效应", prompt: "温室气体会让温室效应变得更严重。", chunk: "Greenhouse gases make the greenhouse effect worse.", note: "make...worse 是解释因果关系时更自然的口语结构。", example: "Greenhouse gases make the greenhouse effect worse and raise global temperatures." },
   { scene: "冰河期末段", prompt: "我们仍处于冰河期的末段。", chunk: "We're still in the tail end of the Ice Age.", note: "the tail end of sth 指某一时期的最后阶段。", example: "The polar ice caps are remnants from the tail end of the Ice Age." },
   { scene: "起到作用", prompt: "全球变暖无疑在加速这个过程。", chunk: "Global warming is undoubtedly playing a part in accelerating the process.", note: "play a part in doing 表示在某事中起作用。", example: "Deforestation plays a part in climate change." },
   { scene: "另一方面", prompt: "另一方面，还有一些更紧迫的问题。", chunk: "On the flip side, there are more immediate issues.", note: "on the flip side 用于引出另一面。", example: "Recycling helps; on the flip side, consumption keeps rising." },

@@ -13,7 +13,7 @@ window.SEED_DECKS.push({ topic: 68, cards: [
   { scene: "播放回看", prompt: "如果我去开门，可以把节目回放。", chunk: "I can play it back if I have to answer the door.", note: "play sth back 表示播放已录制的内容。", example: "Play that scene back—I missed the dialogue." },
   { scene: "没有它会无所适从", prompt: "没有电视，我会无所适从。", chunk: "I'd be lost without my telly.", note: "be lost without sth 表示没有某物就不知怎么办；telly 是英式口语。", example: "My grandparents would be lost without their television." },
   { scene: "成为过去", prompt: "电视似乎正迅速成为过去。", chunk: "Television seemed to be becoming a thing of the past.", note: "a thing of the past 指已经过时或不再存在的事物。", example: "Scheduled broadcasting may become a thing of the past." },
-  { scene: "小众剧集", prompt: "我会看某部扣人心弦的小众电视剧的下一集。", chunk: "I'll watch the next instalment of a gripping niche drama.", note: "gripping 指引人入胜；niche 指面向特定小群体。", example: "The niche series developed a loyal fan base." },
+  { scene: "小众剧集", prompt: "我会接着看下一集让我上头的剧。", chunk: "I'll watch the next episode of a show I'm hooked on.", note: "episode 和 be hooked on 是更高频的日常说法。", example: "I'll watch the next episode of a show I'm hooked on." },
   { scene: "连续狂看", prompt: "我会开始连续狂看整整四季。", chunk: "I go on a binge and watch all four seasons.", note: "go on a watching binge 指在短时间内连续观看大量内容。", example: "We went on a weekend streaming binge." },
   { scene: "赞不绝口", prompt: "我表哥很久以来一直对那部剧赞不绝口。", chunk: "My cousin had been raving about the series for ages.", note: "rave about sth 表示非常热情地称赞某事。", example: "Everyone was raving about the final episode." },
   { scene: "立刻着迷", prompt: "我一看就立刻着迷了。", chunk: "I was instantly hooked.", note: "be hooked 表示对某事着迷、停不下来。", example: "I was hooked after the first episode." }

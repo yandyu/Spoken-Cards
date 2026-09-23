@@ -3,7 +3,7 @@ window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 59, cards: [
   { scene: "艺术作品", prompt: "它被认为是二十世纪最重要的艺术作品。", chunk: "It's said to be the most important work of art of the twentieth century.", note: "a work of art 指一件艺术作品。", example: "The sculpture is a remarkable work of art." },
   { scene: "艺术才华", prompt: "我儿子很有艺术才华。", chunk: "My son is very artistic.", note: "artistic 可形容人有艺术天赋，也可形容设计具有艺术性。", example: "She has a very artistic approach to photography." },
-  { scene: "透视感", prompt: "这幅画有很强的透视感。", chunk: "It has a strong feeling of perspective.", note: "perspective 在绘画中指表现远近和空间深度的方法。", example: "The diagonal lines create a sense of perspective." },
+  { scene: "透视感", prompt: "这幅画让人感觉空间很有层次。", chunk: "It gives the painting a real sense of depth.", note: "sense of depth 是描述画面空间感更自然的说法。", example: "It gives the painting a real sense of depth, even though it's quite simple." },
   { scene: "只要", prompt: "只要贴上艺术的标签，任何东西都可以成为艺术品。", chunk: "Anything can be a work of art as long as it's labelled as such.", note: "as long as 表示只要某条件成立。", example: "An object can enter a gallery as long as the curator accepts it." },
   { scene: "开辟新路", prompt: "这个观念为艺术界开辟了新的道路。", chunk: "The concept opened up new doorways in the art world.", note: "open up new doorways 比喻创造新的机会或可能性。", example: "Photography opened up new doorways for artists." },
   { scene: "固然如此", prompt: "那固然不错，但很多真正的技艺已经丢失了。", chunk: "That's all well and good, but a lot of real skill has been lost.", note: "that's all well and good 常用于先承认一点，随后提出保留或反对。", example: "Public art is all well and good, but it needs proper funding." },

@@ -3,8 +3,8 @@ window.SEED_DECKS = window.SEED_DECKS || [];
 window.SEED_DECKS.push({ topic: 63, cards: [
   { scene: "进行实验", prompt: "科学家们进行了一项克隆实验。", chunk: "The scientists carried out a cloning experiment.", note: "do、conduct、carry out an experiment 都表示进行实验。", example: "We conducted the experiment in the school laboratory." },
   { scene: "提出理论", prompt: "他们提出了一个新的理论。", chunk: "They came up with a new theory.", note: "come up with 表示想出或提出。", example: "The researchers came up with a testable hypothesis." },
-  { scene: "严格按字面", prompt: "如果严格按照问题的字面回答，我会说绝对不赞成。", chunk: "To answer the question to the letter, I'd say definitely not.", note: "to the letter 表示严格按照文字或规定。", example: "The procedure must be followed to the letter." },
-  { scene: "切开", prompt: "制造一个会被切开取器官的复制人是令人反感的。", chunk: "Creating a clone to be cut up for organs is repulsive.", note: "cut up 指切成若干块。", example: "The specimen was cut up for examination." },
+  { scene: "严格按字面", prompt: "如果严格按问题的字面来回答，我会说绝对不是。", chunk: "If I answer the question literally, I'd say definitely not.", note: "answer literally 是更常见、更清楚的说法。", example: "If I answer the question literally, I'd say definitely not." },
+  { scene: "切开", prompt: "为了取器官而制造一个复制人，这个想法太可怕了。", chunk: "The idea of making a clone just to take its organs is horrifying.", note: "horrifying 比 repulsive 更适合表达对这个设想的强烈反感。", example: "The idea of making a clone just to take its organs is horrifying." },
   { scene: "设身处地", prompt: "设身处地为那个复制人想一想。", chunk: "Put yourself in the shoes of the clone.", note: "put yourself in sb's shoes 表示设想自己处于对方处境。", example: "Put yourself in the scientist's shoes before judging." },
   { scene: "存在意义", prompt: "你存在的意义会是什么？", chunk: "What would be the point of your existence?", note: "the point of sth 指某事的目的或意义。", example: "What is the point of an experiment with no clear question?" },
   { scene: "远不能接受", prompt: "这个想法仍然远不能让人接受。", chunk: "The idea is still far from agreeable.", note: "far from + 形容词 表示远非某种状态。", example: "The evidence is far from conclusive." },

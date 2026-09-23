@@ -15,5 +15,5 @@ window.SEED_DECKS.push({ topic: 34, cards: [
   { scene: "有好有坏", prompt: "这份工作也有让人开心的时候。", chunk: "The job has its moments.", note: "have its moments 表示某事偶尔也有不错或有趣的时候。", example: "The journey was tiring, but it had its moments." },
   { scene: "带离场所", prompt: "工作人员把他带离了场地。", chunk: "Staff took him off the premises.", note: "take sb off the premises 表示把某人带离某处的房屋或场地。", example: "Security took the visitor off the premises." },
   { scene: "集体出游", prompt: "我们为孩子们安排了一次出游。", chunk: "We arranged an outing for the children.", note: "an outing 指集体短途外出或游览。", example: "The centre organises a monthly outing." },
-  { scene: "总体评价", prompt: "总体来说，设施很好。", chunk: "On the whole, the facilities are good.", note: "on the whole 表示总体上、大体而言。", example: "On the whole, the new system works well." }
+  { scene: "总体评价", prompt: "总体来说，这里的设施还挺不错。", chunk: "Overall, the facilities are pretty good.", note: "overall / pretty good 是更自然的口语总结方式。", example: "Overall, the facilities are pretty good, especially for families." }
 ] });

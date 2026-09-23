@@ -7,7 +7,7 @@ window.SEED_DECKS.push({ topic: 46, cards: [
   { scene: "侨居者", prompt: "我认识几位住在亚洲的侨居者。", chunk: "I know several expats living in Asia.", note: "expat 是 expatriate 的非正式缩写。", example: "The city has a large expat community." },
   { scene: "文化冲击", prompt: "刚到那里时，我感受到了强烈的文化冲击。", chunk: "I felt a lot of culture shock when I first arrived.", note: "culture shock 指进入陌生文化后的不适和困惑。", example: "It took her months to overcome the culture shock." },
   { scene: "值得肯定", prompt: "移居另一个国家有很多好处。", chunk: "There's a lot to be said for moving to another country.", note: "there's a lot to be said for 表示某事有不少可取之处。", example: "There's a lot to be said for studying abroad." },
-  { scene: "成群离开", prompt: "人们正成群结队地离开这个国家。", chunk: "People are leaving the country in droves.", note: "in droves 表示成群地、大量地。", example: "Graduates moved to the capital in droves." },
+  { scene: "成群离开", prompt: "越来越多人正在离开这个国家。", chunk: "People are leaving the country in huge numbers.", note: "in huge numbers 比 in droves 更容易理解，也更适合主动运用。", example: "People are leaving the country in huge numbers because they can't find decent jobs." },
   { scene: "安顿下来", prompt: "安顿下来需要一段时间。", chunk: "It takes a while to settle in.", note: "settle in 指适应并习惯新环境。", example: "The host family helped me settle in quickly." },
   { scene: "即便有也很少", prompt: "大多数人一年只度假一次，即便有的话。", chunk: "Most people go on holiday once a year, if that.", note: "if that 表示实际数量可能连前面所说的都达不到。", example: "I see my old classmates twice a year, if that." },
   { scene: "改变说法", prompt: "我买了机票以后，他们立刻改变了说法。", chunk: "They changed their tune as soon as I bought my ticket.", note: "change your tune 表示改变原先的态度或说法。", example: "He changed his tune when he saw the results." },

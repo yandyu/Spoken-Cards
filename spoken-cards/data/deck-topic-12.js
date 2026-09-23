@@ -15,7 +15,7 @@ window.SEED_DECKS.push({ topic: 12, cards: [
   { scene: "留意某人", prompt: "请帮我留意一下孩子们。", chunk: "Please keep an eye on the children.", note: "keep an eye on 表示留意、照看或监视。", example: "Could you keep an eye on my bag for a minute?" },
   { scene: "设局", prompt: "这是一个圈套。", chunk: "It was a set-up.", note: "set-up 作名词可表示事先安排好的圈套；动词写作 set up。", example: "He realised too late that the meeting was a set-up." },
   { scene: "评价动机", prompt: "她不是拜金女。", chunk: "She's not a gold digger.", note: "gold digger 非正式且带贬义，指为钱与人交往的人。", example: "People called him a gold digger, which was completely unfair." },
-  { scene: "谈当代", prompt: "在当今这个时代……", chunk: "In this day and age, …", note: "用于谈论当代社会，常带有今昔对比。", example: "In this day and age, couples can define marriage for themselves." },
+  { scene: "谈当代", prompt: "说到现在这个时代，人们对婚姻的看法已经变了。", chunk: "These days, people see marriage differently.", note: "these days 是更自然的日常说法；不要只背一个没有主句的开头。", example: "These days, people see marriage differently, and couples have more choices." },
   { scene: "总结重点", prompt: "归根结底，信任已经没有了。", chunk: "The bottom line is that the trust has gone.", note: "the bottom line is that 用于给出最重要的结论。", example: "The bottom line is that we cannot afford another delay." },
   { scene: "倍数比较", prompt: "情况糟了十倍。", chunk: "It was ten times as bad.", note: "倍数 + as + 形容词 + as 用于倍数比较；口语中也可省略第二个 as 的比较对象。", example: "The traffic was ten times as bad on Friday." },
   { scene: "另一面", prompt: "另一方面，他现在自由多了。", chunk: "On the flip side, he's much freer now.", note: "on the flip side 非正式表示从相反或另一角度看。", example: "The flat is tiny; on the flip side, the rent is low." },
