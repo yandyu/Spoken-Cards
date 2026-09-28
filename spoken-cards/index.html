@@ -111,8 +111,6 @@
   .scene { font-size: 13px; color: var(--ink-2); font-weight: 500; }
   .prompt { font-size: 22px; font-weight: 600; line-height: 1.5; letter-spacing: -0.2px; }
   .hint { font-size: 12.5px; color: var(--ink-3); }
-  .usage-cue { align-self: center; max-width: 92%; padding: 7px 11px; border-radius: 12px; background: var(--tint-bg); color: var(--tint); font-size: 12px; line-height: 1.45; }
-  .usage-cue b { font-weight: 600; margin-right: 4px; }
   .chunk { font-size: 23px; font-weight: 600; line-height: 1.4; letter-spacing: -0.3px; }
   .example { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; font-style: italic; }
   .note { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; background: var(--fill); border-radius: 16px; padding: 11px 14px; text-align: left; }
@@ -168,6 +166,7 @@
   }
   nav button.on { color: var(--tint); }
   nav button .ico { display: block; width: 21px; height: 21px; margin: 0 auto 2px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  nav button .ico.footsteps { fill: currentColor; stroke: none; }
 
   .page { display: none; padding: 4px 16px calc(96px + env(safe-area-inset-bottom)); }
   .page.show { display: block; }
@@ -215,7 +214,10 @@
   .bigbtn:active { transform: scale(0.97); }
 
   .importhelp { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; margin: 8px 6px 12px; }
+
+  .progress-settings { display: none; }
 </style>
+<link rel="stylesheet" href="./progress.css?v=20">
 </head>
 <body>
 <div id="app">
@@ -226,6 +228,7 @@
       <button data-m="ear">耳机</button>
       <button data-m="speak">出声</button>
     </div>
+    <button id="progressSettings" class="progress-settings" type="button" aria-label="设置" title="设置暂未开放"><svg class="ico" viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/><path d="M19.2 13.5a7.6 7.6 0 0 0 0-3l1.4-1.1-1.8-3.1-1.7.7a7.7 7.7 0 0 0-2.6-1.5L14.2 3h-3.6l-.3 2.5a7.7 7.7 0 0 0-2.6 1.5L6 6.3 4.2 9.4l1.4 1.1a7.6 7.6 0 0 0 0 3l-1.4 1.1L6 17.7l1.7-.7a7.7 7.7 0 0 0 2.6 1.5l.3 2.5h3.6l.3-2.5a7.7 7.7 0 0 0 2.6-1.5l1.7.7 1.8-3.1-1.4-1.1z"/></svg></button>
   </header>
 
   <div class="stats">
@@ -244,118 +247,143 @@
 
   <div class="page" id="pgDebt"></div>
 
+  <div class="page progress-page" id="pgProgress"></div>
+
   <nav>
-    <button id="nvReview" class="on" onclick="showPage('review')"><svg class="ico" viewBox="0 0 24 24"><rect x="8" y="3" width="12" height="16" rx="2.5"/><rect x="4" y="5.5" width="12" height="16" rx="2.5" fill="var(--bg)"/><path d="M7.5 11h5M7.5 14.5h3.5"/></svg>今日</button>
-    <button id="nvBook" onclick="showPage('book')"><svg class="ico" viewBox="0 0 24 24"><path d="M12 6.2C10.2 4.7 7.6 4.2 4 4.2v13.6c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2V4.2c-3.6 0-6.2.5-8 2z"/><path d="M12 6.2v13.6"/></svg>书目</button>
+    <button id="nvReview" class="on" onclick="showPage('review')"><svg class="ico" viewBox="0 0 24 26" aria-hidden="true"><rect x="6" y="3" width="16" height="16" rx="3"/><rect x="2" y="7" width="16" height="16" rx="3" fill="var(--bg)"/><path d="M6 8.5h5"/></svg>今日</button>
+    <button id="nvBook" onclick="showPage('book')"><svg class="ico" viewBox="0 0 24 26" aria-hidden="true"><path d="m2 8 10-6 10 6H2ZM3 22h18M2 24h20M5 11v8M10 11v8M15 11v8M20 11v8"/></svg>书目</button>
+    <button id="nvProgress" onclick="showPage('progress')"><svg class="ico footsteps" viewBox="-1 0 28 28" aria-hidden="true"><g transform="rotate(-20 6 12)"><path d="M6 6c-3 0-4 3-3.4 6.3.3 1.6 1.5 2.9 1.5 4.7 0 2.8 4.8 3.2 4.8-.1 0-1.9-1.2-3.8-.4-5.5C10.1 8.3 8.9 6 6 6Z"/><ellipse cx="8.1" cy="3.1" rx="1.3" ry="1.6"/><circle cx="5.2" cy="2.5" r="1"/><circle cx="2.9" cy="3.1" r=".85"/><circle cx="1.2" cy="4.5" r=".7"/></g><g transform="translate(12 6) rotate(19 6 12)"><path d="M6 6c-3 0-4 3-3.4 6.3.3 1.6 1.5 2.9 1.5 4.7 0 2.8 4.8 3.2 4.8-.1 0-1.9-1.2-3.8-.4-5.5C10.1 8.3 8.9 6 6 6Z"/><ellipse cx="3.9" cy="3.1" rx="1.3" ry="1.6"/><circle cx="6.8" cy="2.5" r="1"/><circle cx="9.1" cy="3.1" r=".85"/><circle cx="10.8" cy="4.5" r=".7"/></g></svg>进度</button>
   </nav>
 </div>
 
-<script src="data/toc.js?v=9"></script>
-<script src="data/deck-topic-01.js?v=9"></script>
-<script src="data/deck-topic-02.js?v=9"></script>
-<script src="data/deck-topic-03.js?v=9"></script>
-<script src="data/deck-topic-04.js?v=9"></script>
-<script src="data/deck-topic-05.js?v=9"></script>
-<script src="data/deck-topic-06.js?v=9"></script>
-<script src="data/deck-topic-07.js?v=9"></script>
-<script src="data/deck-topic-08.js?v=9"></script>
-<script src="data/deck-topic-09.js?v=9"></script>
-<script src="data/deck-topic-10.js?v=9"></script>
-<script src="data/deck-topic-11.js?v=9"></script>
-<script src="data/deck-topic-12.js?v=9"></script>
-<script src="data/deck-topic-13.js?v=9"></script>
-<script src="data/deck-topic-14.js?v=9"></script>
-<script src="data/deck-topic-15.js?v=9"></script>
-<script src="data/deck-topic-16.js?v=9"></script>
-<script src="data/deck-topic-17.js?v=9"></script>
-<script src="data/deck-topic-18.js?v=9"></script>
-<script src="data/deck-topic-19.js?v=9"></script>
-<script src="data/deck-topic-20.js?v=9"></script>
-<script src="data/deck-topic-21.js?v=9"></script>
-<script src="data/deck-topic-22.js?v=9"></script>
-<script src="data/deck-topic-23.js?v=9"></script>
-<script src="data/deck-topic-24.js?v=9"></script>
-<script src="data/deck-topic-25.js?v=9"></script>
-<script src="data/deck-topic-26.js?v=9"></script>
-<script src="data/deck-topic-27.js?v=9"></script>
-<script src="data/deck-topic-28.js?v=9"></script>
-<script src="data/deck-topic-29.js?v=9"></script>
-<script src="data/deck-topic-30.js?v=9"></script>
-<script src="data/deck-topic-31.js?v=9"></script>
-<script src="data/deck-topic-32.js?v=9"></script>
-<script src="data/deck-topic-33.js?v=9"></script>
-<script src="data/deck-topic-34.js?v=9"></script>
-<script src="data/deck-topic-35.js?v=9"></script>
-<script src="data/deck-topic-36.js?v=9"></script>
-<script src="data/deck-topic-37.js?v=9"></script>
-<script src="data/deck-topic-38.js?v=9"></script>
-<script src="data/deck-topic-39.js?v=9"></script>
-<script src="data/deck-topic-40.js?v=9"></script>
-<script src="data/deck-topic-41.js?v=9"></script>
-<script src="data/deck-topic-42.js?v=9"></script>
-<script src="data/deck-topic-43.js?v=9"></script>
-<script src="data/deck-topic-44.js?v=9"></script>
-<script src="data/deck-topic-45.js?v=9"></script>
-<script src="data/deck-topic-46.js?v=9"></script>
-<script src="data/deck-topic-47.js?v=9"></script>
-<script src="data/deck-topic-48.js?v=9"></script>
-<script src="data/deck-topic-49.js?v=9"></script>
-<script src="data/deck-topic-50.js?v=9"></script>
-<script src="data/deck-topic-51.js?v=9"></script>
-<script src="data/deck-topic-52.js?v=9"></script>
-<script src="data/deck-topic-53.js?v=9"></script>
-<script src="data/deck-topic-54.js?v=9"></script>
-<script src="data/deck-topic-55.js?v=9"></script>
-<script src="data/deck-topic-56.js?v=9"></script>
-<script src="data/deck-topic-57.js?v=9"></script>
-<script src="data/deck-topic-58.js?v=9"></script>
-<script src="data/deck-topic-59.js?v=9"></script>
-<script src="data/deck-topic-60.js?v=9"></script>
-<script src="data/deck-topic-61.js?v=9"></script>
-<script src="data/deck-topic-62.js?v=9"></script>
-<script src="data/deck-topic-63.js?v=9"></script>
-<script src="data/deck-topic-64.js?v=9"></script>
-<script src="data/deck-topic-65.js?v=9"></script>
-<script src="data/deck-topic-66.js?v=9"></script>
-<script src="data/deck-topic-67.js?v=9"></script>
-<script src="data/deck-topic-68.js?v=9"></script>
-<script src="data/deck-topic-69.js?v=9"></script>
-<script src="data/deck-topic-70.js?v=9"></script>
-<script src="data/deck-topic-71.js?v=9"></script>
-<script src="data/deck-topic-72.js?v=9"></script>
-<script src="data/deck-topic-73.js?v=9"></script>
-<script src="data/deck-topic-74.js?v=9"></script>
-<script src="data/deck-topic-75.js?v=9"></script>
-<script src="data/deck-topic-76.js?v=9"></script>
-<script src="data/deck-topic-77.js?v=9"></script>
-<script src="data/deck-topic-78.js?v=9"></script>
-<script src="data/deck-topic-79.js?v=9"></script>
-<script src="data/deck-topic-80.js?v=9"></script>
-<script src="data/deck-topic-81.js?v=9"></script>
-<script src="data/deck-topic-82.js?v=9"></script>
-<script src="data/deck-topic-83.js?v=9"></script>
-<script src="data/deck-topic-84.js?v=9"></script>
-<script src="data/deck-topic-85.js?v=9"></script>
-<script src="data/deck-topic-86.js?v=9"></script>
-<script src="data/deck-topic-87.js?v=9"></script>
-<script src="data/deck-topic-88.js?v=9"></script>
-<script src="data/deck-topic-89.js?v=9"></script>
-<script src="data/deck-topic-90.js?v=9"></script>
-<script src="data/deck-topic-91.js?v=9"></script>
-<script src="data/deck-topic-92.js?v=9"></script>
-<script src="data/deck-topic-93.js?v=9"></script>
-<script src="data/deck-topic-94.js?v=9"></script>
-<script src="data/deck-topic-95.js?v=9"></script>
-<script src="data/deck-topic-96.js?v=9"></script>
+<script src="data/toc.js?v=20"></script>
+<script src="data/deck-topic-01.js?v=20"></script>
+<script src="data/deck-topic-02.js?v=20"></script>
+<script src="data/deck-topic-03.js?v=20"></script>
+<script src="data/deck-topic-04.js?v=20"></script>
+<script src="data/deck-topic-05.js?v=20"></script>
+<script src="data/deck-topic-06.js?v=20"></script>
+<script src="data/deck-topic-07.js?v=20"></script>
+<script src="data/deck-topic-08.js?v=20"></script>
+<script src="data/deck-topic-09.js?v=20"></script>
+<script src="data/deck-topic-10.js?v=20"></script>
+<script src="data/deck-topic-11.js?v=20"></script>
+<script src="data/deck-topic-12.js?v=20"></script>
+<script src="data/deck-topic-13.js?v=20"></script>
+<script src="data/deck-topic-14.js?v=20"></script>
+<script src="data/deck-topic-15.js?v=20"></script>
+<script src="data/deck-topic-16.js?v=20"></script>
+<script src="data/deck-topic-17.js?v=20"></script>
+<script src="data/deck-topic-18.js?v=20"></script>
+<script src="data/deck-topic-19.js?v=20"></script>
+<script src="data/deck-topic-20.js?v=20"></script>
+<script src="data/deck-topic-21.js?v=20"></script>
+<script src="data/deck-topic-22.js?v=20"></script>
+<script src="data/deck-topic-23.js?v=20"></script>
+<script src="data/deck-topic-24.js?v=20"></script>
+<script src="data/deck-topic-25.js?v=20"></script>
+<script src="data/deck-topic-26.js?v=20"></script>
+<script src="data/deck-topic-27.js?v=20"></script>
+<script src="data/deck-topic-28.js?v=20"></script>
+<script src="data/deck-topic-29.js?v=20"></script>
+<script src="data/deck-topic-30.js?v=20"></script>
+<script src="data/deck-topic-31.js?v=20"></script>
+<script src="data/deck-topic-32.js?v=20"></script>
+<script src="data/deck-topic-33.js?v=20"></script>
+<script src="data/deck-topic-34.js?v=20"></script>
+<script src="data/deck-topic-35.js?v=20"></script>
+<script src="data/deck-topic-36.js?v=20"></script>
+<script src="data/deck-topic-37.js?v=20"></script>
+<script src="data/deck-topic-38.js?v=20"></script>
+<script src="data/deck-topic-39.js?v=20"></script>
+<script src="data/deck-topic-40.js?v=20"></script>
+<script src="data/deck-topic-41.js?v=20"></script>
+<script src="data/deck-topic-42.js?v=20"></script>
+<script src="data/deck-topic-43.js?v=20"></script>
+<script src="data/deck-topic-44.js?v=20"></script>
+<script src="data/deck-topic-45.js?v=20"></script>
+<script src="data/deck-topic-46.js?v=20"></script>
+<script src="data/deck-topic-47.js?v=20"></script>
+<script src="data/deck-topic-48.js?v=20"></script>
+<script src="data/deck-topic-49.js?v=20"></script>
+<script src="data/deck-topic-50.js?v=20"></script>
+<script src="data/deck-topic-51.js?v=20"></script>
+<script src="data/deck-topic-52.js?v=20"></script>
+<script src="data/deck-topic-53.js?v=20"></script>
+<script src="data/deck-topic-54.js?v=20"></script>
+<script src="data/deck-topic-55.js?v=20"></script>
+<script src="data/deck-topic-56.js?v=20"></script>
+<script src="data/deck-topic-57.js?v=20"></script>
+<script src="data/deck-topic-58.js?v=20"></script>
+<script src="data/deck-topic-59.js?v=20"></script>
+<script src="data/deck-topic-60.js?v=20"></script>
+<script src="data/deck-topic-61.js?v=20"></script>
+<script src="data/deck-topic-62.js?v=20"></script>
+<script src="data/deck-topic-63.js?v=20"></script>
+<script src="data/deck-topic-64.js?v=20"></script>
+<script src="data/deck-topic-65.js?v=20"></script>
+<script src="data/deck-topic-66.js?v=20"></script>
+<script src="data/deck-topic-67.js?v=20"></script>
+<script src="data/deck-topic-68.js?v=20"></script>
+<script src="data/deck-topic-69.js?v=20"></script>
+<script src="data/deck-topic-70.js?v=20"></script>
+<script src="data/deck-topic-71.js?v=20"></script>
+<script src="data/deck-topic-72.js?v=20"></script>
+<script src="data/deck-topic-73.js?v=20"></script>
+<script src="data/deck-topic-74.js?v=20"></script>
+<script src="data/deck-topic-75.js?v=20"></script>
+<script src="data/deck-topic-76.js?v=20"></script>
+<script src="data/deck-topic-77.js?v=20"></script>
+<script src="data/deck-topic-78.js?v=20"></script>
+<script src="data/deck-topic-79.js?v=20"></script>
+<script src="data/deck-topic-80.js?v=20"></script>
+<script src="data/deck-topic-81.js?v=20"></script>
+<script src="data/deck-topic-82.js?v=20"></script>
+<script src="data/deck-topic-83.js?v=20"></script>
+<script src="data/deck-topic-84.js?v=20"></script>
+<script src="data/deck-topic-85.js?v=20"></script>
+<script src="data/deck-topic-86.js?v=20"></script>
+<script src="data/deck-topic-87.js?v=20"></script>
+<script src="data/deck-topic-88.js?v=20"></script>
+<script src="data/deck-topic-89.js?v=20"></script>
+<script src="data/deck-topic-90.js?v=20"></script>
+<script src="data/deck-topic-91.js?v=20"></script>
+<script src="data/deck-topic-92.js?v=20"></script>
+<script src="data/deck-topic-93.js?v=20"></script>
+<script src="data/deck-topic-94.js?v=20"></script>
+<script src="data/deck-topic-95.js?v=20"></script>
+<script src="data/deck-topic-96.js?v=20"></script>
 <script>
 const LS_STATE = "sc_state_v1";
 const DAY = 86400000;
 const ICO_SPK = '<svg class="bico" viewBox="0 0 24 24"><path d="M11 5.5L6.5 9H4.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2L11 18.5z"/><path d="M14.5 9.5a4 4 0 0 1 0 5"/><path d="M17 7a7.5 7.5 0 0 1 0 10"/></svg>';
-let state = load(LS_STATE, { cards: {}, silentQueue: [], mode: "ear", newPerSession: 6 });
+let state = load(LS_STATE, { cards: {}, silentQueue: [], checkins: {}, practiceCounts: {}, mode: "ear", newPerSession: 6 });
+state.checkins = state.checkins || {};
+state.practiceCounts = state.practiceCounts || {};
 let queue = [], current = null, flipped = false, fromDebt = false;
+let progressMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let progressYear = progressMonth.getFullYear();
 
 function load(k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }
 function save() { localStorage.setItem(LS_STATE, JSON.stringify(state)); }
+function dateKey(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
+function addDays(d, n) { const next = new Date(d); next.setDate(next.getDate() + n); return next; }
+function levelFor(key) { return Number(state.checkins[key] || 0); }
+function levelLabel(level) { return level === 2 ? "深度练习" : level === 1 ? "轻量学习" : "未打卡"; }
+function recordPractice() {
+  const key = dateKey(new Date());
+  state.practiceCounts[key] = (state.practiceCounts[key] || 0) + 1;
+  state.checkins[key] = state.practiceCounts[key] >= 6 ? 2 : 1;
+}
+function progressStats() {
+  const today = new Date();
+  let cursor = levelFor(dateKey(today)) ? today : addDays(today, -1);
+  let streak = 0;
+  while (levelFor(dateKey(cursor))) { streak++; cursor = addDays(cursor, -1); }
+  const prefix = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-`;
+  const monthCount = Object.keys(state.checkins).filter(key => key.startsWith(prefix) && levelFor(key) > 0).length;
+  return { streak, monthCount };
+}
 
 function allDecks() {
   return window.SEED_DECKS || [];
@@ -399,27 +427,148 @@ function renderStats() {
   cards.forEach(c => { const s = state.cards[c.id]; if (s && s.seen) { stock++; if (s.due <= endOfToday) due++; } });
   stStock.textContent = stock; stDue.textContent = due; stDebt.textContent = state.silentQueue.length;
 }
+function renderProgress() {
+  const root = document.getElementById("pgProgress");
+  const { streak, monthCount } = progressStats();
+  const year = progressMonth.getFullYear(), month = progressMonth.getMonth();
+  progressYear = year;
+  const monthTitle = `${year} 年 ${month + 1} 月`;
+  const first = new Date(year, month, 1);
+  const mondayOffset = (first.getDay() + 6) % 7;
+  const days = new Date(year, month + 1, 0).getDate();
+  const totalCells = Math.ceil((mondayOffset + days) / 7) * 7;
+  let calendar = "";
+  for (let i = 0; i < totalCells; i++) {
+    const d = addDays(first, i - mondayOffset), key = dateKey(d), inside = d.getMonth() === month;
+    const level = levelFor(key);
+    const today = key === dateKey(new Date());
+    const intensity = Math.min(4, Math.max(1, Number(state.practiceCounts[key]) || 1));
+    calendar += `<div class="calendar-cell level-${level}${inside ? "" : " outside"}${today ? " today" : ""}" data-intensity="${intensity}" aria-label="${key}，${levelLabel(level)}">${d.getDate()}</div>`;
+  }
+
+  const years = Object.keys(state.checkins).map(key => Number(key.slice(0, 4))).filter(Boolean);
+  const minYear = Math.min(year - 2, ...(years.length ? years : [year]));
+  const maxYear = Math.max(year + 2, ...(years.length ? years : [year]));
+  let yearOptions = "";
+  for (let y = minYear; y <= maxYear; y++) yearOptions += `<button type="button" role="option" aria-selected="${y === progressYear}" tabindex="${y === progressYear ? 0 : -1}" onclick="chooseProgressYear(${y})">${y}</button>`;
+
+  const daysInYear = (Date.UTC(progressYear + 1, 0, 1) - Date.UTC(progressYear, 0, 1)) / DAY;
+  let heatmap = "";
+  const heatmapCells = 28 * 4;
+  for (let i = 0; i < heatmapCells; i++) {
+    const startDay = Math.floor(i * daysInYear / heatmapCells);
+    const endDay = Math.max(startDay, Math.floor((i + 1) * daysInYear / heatmapCells) - 1);
+    let level = 0;
+    for (let day = startDay; day <= endDay; day++) level = Math.max(level, levelFor(dateKey(new Date(progressYear, 0, day + 1))));
+    const startDate = new Date(progressYear, 0, startDay + 1);
+    const endDate = new Date(progressYear, 0, endDay + 1);
+    const future = startDate > new Date();
+    heatmap += `<span class="heat-cell level-${level}${future ? " future" : ""}" title="${startDate.toLocaleDateString("zh-CN")}–${endDate.toLocaleDateString("zh-CN")} · ${levelLabel(level)}"></span>`;
+  }
+
+  root.innerHTML = `
+    <section class="progress-hero glass">
+      <div class="streak-number" style="--digits:${String(streak).length}" role="img" aria-label="${streak} 天"><svg viewBox="0 0 ${String(streak).length * 69 + 12} 120" aria-hidden="true"><defs><linearGradient id="streakBlue" x1="0" y1="0" x2="1" y2=".8"><stop offset="0" stop-color="#329bff"/><stop offset=".55" stop-color="#0066ff"/><stop offset="1" stop-color="#45a5ff"/></linearGradient></defs><text x="50%" y="94" text-anchor="middle" font-size="112" fill="url(#streakBlue)">${streak}</text></svg></div>
+      <div><h1>连续学习天数</h1><p>本月已打卡 ${monthCount} 天</p></div>
+    </section>
+    <section class="progress-section glass">
+      <div class="progress-month-head"><button type="button" class="month-arrow" aria-label="上个月" onclick="changeProgressMonth(-1)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 4-8 8 8 8"/></svg></button><h2>${monthTitle}</h2><button type="button" class="month-arrow" aria-label="下个月" onclick="changeProgressMonth(1)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 4 8 8-8 8"/></svg></button></div>
+      <div class="calendar-week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+      <div class="calendar-grid">${calendar}</div>
+      <div class="progress-legend"><span class="legend-item"><i class="legend-swatch level-0"></i>未打卡</span><span class="legend-item"><i class="legend-swatch level-1"></i>轻量学习</span><span class="legend-item"><i class="legend-swatch level-2"></i>深度练习</span></div>
+    </section>
+    <section class="progress-section progress-year glass">
+      <div class="progress-year-head"><h2>学习足迹</h2><button type="button" id="yearTrigger" class="year-select" aria-label="选择学习年份" aria-haspopup="listbox" aria-expanded="false" aria-controls="yearMenu" onclick="toggleYearPicker()">${progressYear}<svg viewBox="0 0 12 12" aria-hidden="true"><path d="m1 3 5 6 5-6Z"/></svg></button></div>
+      <div class="year-heatmap"><div class="heatmap-grid" role="img" aria-label="${progressYear} 年学习足迹；每格汇总约三到四天，深浅表示该时段最高练习强度">${heatmap}</div><div class="heatmap-months"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span></div></div>
+    </section>
+    <div id="yearMenu" class="year-menu" popover="auto" role="listbox" aria-label="学习年份" onkeydown="handleYearKeys(event)">${yearOptions}</div>`;
+  document.getElementById("yearMenu").addEventListener("toggle", event => {
+    document.getElementById("yearTrigger").setAttribute("aria-expanded", String(event.newState === "open"));
+  });
+}
+// The top-layer panel must follow its trigger, including during page scrolling.
+// Never flip it above the trigger: short viewports scroll the options instead.
+function positionYearPicker() {
+  const menu = document.getElementById("yearMenu"), trigger = document.getElementById("yearTrigger");
+  if (!menu || !trigger) return;
+  const rect = trigger.getBoundingClientRect();
+  const viewport = window.visualViewport;
+  const viewportBottom = viewport ? viewport.offsetTop + viewport.height : innerHeight;
+  const available = viewportBottom - rect.bottom - 20;
+  if (menu.matches(":popover-open") && (rect.bottom <= 0 || available < 52)) {
+    menu.hidePopover();
+    return;
+  }
+  const width = rect.width;
+  menu.style.width = `${width}px`;
+  menu.style.setProperty("--year-font-size", getComputedStyle(trigger).fontSize);
+  menu.style.left = `${Math.max(12, Math.min(innerWidth - width - 12, rect.right - width))}px`;
+  menu.style.top = `${rect.bottom + 8}px`;
+  menu.style.maxHeight = `${Math.max(0, Math.min(300, available))}px`;
+}
+let yearPickerFrame = 0;
+function followYearPicker(event) {
+  const menu = document.getElementById("yearMenu");
+  if (!menu?.matches(":popover-open") || (event.target instanceof Node && menu.contains(event.target))) return;
+  cancelAnimationFrame(yearPickerFrame);
+  yearPickerFrame = requestAnimationFrame(positionYearPicker);
+}
+window.addEventListener("scroll", followYearPicker, { capture: true, passive: true });
+window.addEventListener("resize", followYearPicker);
+window.visualViewport?.addEventListener("resize", followYearPicker);
+window.visualViewport?.addEventListener("scroll", followYearPicker);
+function toggleYearPicker() {
+  const menu = document.getElementById("yearMenu"), trigger = document.getElementById("yearTrigger");
+  if (menu.matches(":popover-open")) { menu.hidePopover(); return; }
+  // Make room for at least two rows when the trigger is near the viewport edge.
+  const viewport = window.visualViewport;
+  const viewportBottom = viewport ? viewport.offsetTop + viewport.height : innerHeight;
+  const shortfall = trigger.getBoundingClientRect().bottom + 116 - viewportBottom;
+  if (shortfall > 0) window.scrollBy({ top: shortfall, behavior: "instant" });
+  positionYearPicker();
+  menu.showPopover();
+  trigger.setAttribute("aria-expanded", "true");
+  const selected = menu.querySelector('[aria-selected="true"]');
+  selected.focus({ preventScroll: true });
+  menu.scrollTop = Math.max(0, selected.offsetTop - (menu.clientHeight - selected.offsetHeight) / 2);
+}
+function chooseProgressYear(year) {
+  const menu = document.getElementById("yearMenu");
+  if (menu.dataset.closing) return;
+  menu.dataset.closing = "true";
+  menu.hidePopover();
+  // Keep the element mounted while its downward-opening panel folds closed.
+  const delay = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 260;
+  setTimeout(() => {
+    if (!menu.isConnected) return;
+    changeProgressYear(year);
+    if (document.body.classList.contains("progress-view")) document.getElementById("yearTrigger").focus({ preventScroll: true });
+  }, delay);
+}
+function handleYearKeys(event) {
+  const menu = document.getElementById("yearMenu");
+  const options = [...menu.querySelectorAll('[role="option"]')];
+  const index = options.indexOf(document.activeElement);
+  let next;
+  if (event.key === "ArrowDown") next = (index + 1) % options.length;
+  if (event.key === "ArrowUp") next = (index - 1 + options.length) % options.length;
+  if (event.key === "Home") next = 0;
+  if (event.key === "End") next = options.length - 1;
+  if (next !== undefined) { event.preventDefault(); options.forEach((option, i) => option.tabIndex = i === next ? 0 : -1); options[next].focus(); }
+  if (event.key === "Tab") menu.hidePopover();
+  if (event.key === "Escape") { event.preventDefault(); menu.hidePopover(); document.getElementById("yearTrigger").focus({ preventScroll: true }); }
+}
+function changeProgressMonth(delta) {
+  progressMonth = new Date(progressMonth.getFullYear(), progressMonth.getMonth() + delta, 1);
+  renderProgress();
+}
+function changeProgressYear(year) {
+  progressYear = Number(year);
+  progressMonth = new Date(progressYear, progressMonth.getMonth(), 1);
+  renderProgress();
+}
 function renderModes() {
   document.querySelectorAll("#modes button").forEach(b => b.classList.toggle("on", b.dataset.m === state.mode));
-}
-function usageCue(c) {
-  const p = c.prompt || "", x = c.chunk || "";
-  if (/……|…/.test(p) || /^[a-z]/.test(x) || /…,/.test(x)) {
-    return "这是句子里的语块：先在脑中补出完整前后文，再开口。";
-  }
-  if (/如果|要是|除非|哪怕|尽管|虽然/.test(p) || /\b(if|unless|even if|although|despite|in spite of)\b/i.test(x)) {
-    return "这是条件或让步：先说背景，再说结果。";
-  }
-  if (/小时候|以前|过去|曾经|当时|昨天|昨晚|上周|去年|上次|后来|毕业后|搬走以后|回忆|回顾/.test(p) || /\b(when I was|used to|back when|last|ago|yesterday|was|were|had been|have been)\b/i.test(x)) {
-    return "这是在讲已经发生的经历：把时间放在过去。";
-  }
-  if (/明年|下周|以后|将来|等我|到.{0,6}岁|打算|准备|计划|会/.test(p) || /\b(will|going to|by the time|may well|might|I'll|we're moving)\b/i.test(x)) {
-    return "这是未来计划或预测：先确定时间，再说安排或结果。";
-  }
-  if (/现在|目前|最近|一直|每天|通常|经常|总是|越来越|至今/.test(p) || /\b(always|usually|often|these days|at the moment|still|every)\b/i.test(x)) {
-    return "这是现在的近况或习惯：说你平时/目前是什么状态。";
-  }
-  return "先围绕这个场景说完整一句，再套入这段表达。";
 }
 function renderCard() {
   renderStats();
@@ -442,7 +591,6 @@ function renderCard() {
       <div class="card-mid">
         <div class="scene">${esc(current.scene)}</div>
         <div class="prompt">${esc(current.prompt)}</div>
-        <div class="usage-cue"><b>开口提示</b>${esc(usageCue(current))}</div>
         <div class="hint">${modeHint}</div>
       </div>
       <div class="actions"><button class="flip" onclick="flip()">翻面看答案</button></div>`;
@@ -498,6 +646,7 @@ function grade(g) {
   // 静音模式下学过的卡记入"待开口"；出声模式补完后销账
   if (state.mode === "mute" && g > 0 && !state.silentQueue.includes(current.id)) state.silentQueue.push(current.id);
   if (state.mode === "speak" && fromDebt) state.silentQueue = state.silentQueue.filter(id => id !== current.id);
+  recordPractice();
   save(); next();
 }
 
@@ -614,8 +763,10 @@ function startDueReview() {
 
 // ---------- 导航 ----------
 function showPage(p) {
+  document.body.classList.toggle("progress-view", p === "progress");
+  document.getElementById("app").classList.toggle("progress-mode", p === "progress");
   document.getElementById("pgReview").style.display = p === "review" ? "flex" : "none";
-  ["book", "stock", "debt"].forEach(k => {
+  ["book", "stock", "debt", "progress"].forEach(k => {
     document.getElementById("pg" + k[0].toUpperCase() + k.slice(1)).classList.toggle("show", p === k);
   });
   nvReview.classList.toggle("on", p === "review" || p === "stock" || p === "debt");
@@ -623,6 +774,8 @@ function showPage(p) {
   if (p === "book") renderBook();
   if (p === "stock") renderStock();
   if (p === "debt") renderDebt();
+  nvProgress.classList.toggle("on", p === "progress");
+  if (p === "progress") renderProgress();
   window.scrollTo(0, 0);
 }
 document.querySelectorAll("#modes button").forEach(b => b.onclick = () => {
